@@ -1,0 +1,390 @@
+#!/usr/bin/env bash
+#
+# Claude Code + Ralph Plugin - Complete Setup Script
+# Works on macOS and Linux
+#
+# Usage: ./setup-claude-code.sh
+#
+
+set -euo pipefail
+
+# Colors for output
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+log()    { echo -e "${BLUE}▶${NC} $1"; }
+ok()     { echo -e "${GREEN}✓${NC} $1"; }
+fail()   { echo -e "${RED}✗${NC} $1"; }
+warn()   { echo -e "${YELLOW}⚠${NC} $1"; }
+
+# ============================================================
+# Detect OS
+# ============================================================
+OS="$(uname -s || echo unknown)"
+
+case "$OS" in
+  Darwin) PLATFORM="macos" ;;
+  Linux)  PLATFORM="linux" ;;
+  *)      fail "Unsupported OS: $OS"; exit 1 ;;
+esac
+
+log "Detected platform: $PLATFORM"
+
+# ============================================================
+# Phase 1: System Dependencies
+# ============================================================
+echo ""
+log "Phase 1: Installing System Dependencies"
+echo ""
+
+# macOS: Xcode Command Line Tools
+if [[ "$PLATFORM" == "macos" ]]; then
+  if ! xcode-select -p &>/dev/null; then
+    log "Installing Xcode Command Line Tools..."
+    xcode-select --install || true
+    warn "Accept the popup and re-run this script after installation completes."
+    exit 0
+  else
+    ok "Xcode Command Line Tools installed"
+  fi
+fi
+
+# Homebrew
+if ! command -v brew &>/dev/null; then
+  log "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  # Add to PATH
+  if [[ -f "$HOME/.zprofile" ]]; then
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
+    eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null || true
+  fi
+  ok "Homebrew installed"
+else
+  ok "Homebrew already installed"
+  brew update &>/dev/null || true
+fi
+
+# Essential tools
+log "Installing essential tools (jq, git)..."
+brew install jq git curl &>/dev/null || true
+ok "Essential tools installed"
+
+# ============================================================
+# Phase 2: Claude Code Installation
+# ============================================================
+echo ""
+log "Phase 2: Installing Claude Code CLI"
+echo ""
+
+if command -v claude &>/dev/null; then
+  ok "Claude Code already installed: $(claude --version 2>/dev/null || echo 'unknown version')"
+else
+  log "Downloading and installing Claude Code..."
+  curl -fsSL https://claude.ai/install.sh | bash
+
+  # Add to PATH
+  if [[ -n "${ZDOTDIR:-}" ]] && [[ -f "$ZDOTDIR/.zshrc" ]]; then
+    SHELL_RC="$ZDOTDIR/.zshrc"
+  elif [[ -f "$HOME/.zshrc" ]]; then
+    SHELL_RC="$HOME/.zshrc"
+  elif [[ -f "$HOME/.bashrc" ]]; then
+    SHELL_RC="$HOME/.bashrc"
+  else
+    SHELL_RC="$HOME/.profile"
+  fi
+
+  if ! grep -q "\.claude/bin" "$SHELL_RC" 2>/dev/null; then
+    {
+      echo ''
+      echo '# Claude Code CLI'
+      echo 'export PATH="$HOME/.claude/bin:$PATH"'
+    } >> "$SHELL_RC"
+  fi
+
+  export PATH="$HOME/.claude/bin:$PATH"
+  ok "Claude Code installed"
+fi
+
+# ============================================================
+# Phase 3: Configuration
+# ============================================================
+echo ""
+log "Phase 3: Configuring Claude Code"
+echo ""
+
+# Global settings
+mkdir -p "$HOME/.claude"
+
+if [[ ! -f "$HOME/.claude/settings.json" ]]; then
+  log "Creating global settings..."
+  cat > "$HOME/.claude/settings.json" << 'EOF'
+{
+  "permissions": {
+    "defaultMode": "default"
+  },
+  "model": "claude-sonnet-4-5",
+  "respectGitignore": true
+}
+EOF
+  ok "Global settings created"
+else
+  ok "Global settings already exist"
+fi
+
+# ============================================================
+# Phase 4: Test Project Setup
+# ============================================================
+echo ""
+log "Phase 4: Creating Test Project"
+echo ""
+
+TEST_PROJECT="$HOME/test-claude-project"
+
+if [[ ! -d "$TEST_PROJECT" ]]; then
+  mkdir -p "$TEST_PROJECT"
+  cd "$TEST_PROJECT"
+
+  # Initialize git
+  git init &>/dev/null
+  git config user.name "Test User" 2>/dev/null || true
+  git config user.email "test@example.com" 2>/dev/null || true
+
+  # Create test file
+  echo "This is a test file for Claude Code." > test.txt
+  git add test.txt
+  git commit -m "Initial commit" &>/dev/null || true
+
+  # Project settings
+  mkdir -p .claude
+  cat > .claude/settings.local.json << 'EOF'
+{
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Read",
+      "Write",
+      "Edit",
+      "Skill(ralph-wiggum:*)"
+    ]
+  }
+}
+EOF
+
+  ok "Test project created: $TEST_PROJECT"
+else
+  ok "Test project already exists: $TEST_PROJECT"
+fi
+
+# ============================================================
+# Phase 5: Optional Tools
+# ============================================================
+echo ""
+log "Phase 5: Installing Optional Development Tools"
+echo ""
+
+# Node.js
+if ! command -v node &>/dev/null; then
+  log "Installing Node.js..."
+  brew install node &>/dev/null || true
+  ok "Node.js installed"
+else
+  ok "Node.js already installed: $(node --version)"
+fi
+
+# Python
+if ! command -v python3 &>/dev/null; then
+  log "Installing Python..."
+  brew install python@3.11 &>/dev/null || true
+  ok "Python installed"
+else
+  ok "Python already installed: $(python3 --version)"
+fi
+
+# GitHub CLI
+if ! command -v gh &>/dev/null; then
+  log "Installing GitHub CLI..."
+  brew install gh &>/dev/null || true
+  ok "GitHub CLI installed"
+else
+  ok "GitHub CLI already installed"
+fi
+
+# Other useful tools
+log "Installing additional utilities..."
+brew install tree ripgrep fd &>/dev/null || true
+ok "Additional utilities installed"
+
+# ============================================================
+# Phase 6: Helper Scripts & Documentation
+# ============================================================
+echo ""
+log "Phase 6: Creating Helper Scripts"
+echo ""
+
+# Quick start script
+cat > "$HOME/start-claude.sh" << 'EOF'
+#!/bin/bash
+# Quick Claude Code starter
+
+PROJECT_DIR="${1:-.}"
+cd "$PROJECT_DIR" || exit 1
+
+echo "Starting Claude Code in: $(pwd)"
+claude
+EOF
+
+chmod +x "$HOME/start-claude.sh"
+ok "Created ~/start-claude.sh"
+
+# Quick reference
+cat > "$HOME/claude-quick-ref.md" << 'EOF'
+# Claude Code Quick Reference
+
+## Start Claude
+```bash
+cd /path/to/project
+claude
+```
+
+## Ralph Loop Commands
+- `/ralph-loop "Your task" --max-iterations 10` - Start Ralph
+- `/cancel-ralph` - Cancel active Ralph loop
+- `/ralph-loop --help` - Ralph help
+
+## Useful Commands
+- `claude auth status` - Check authentication
+- `claude auth login` - Re-authenticate
+- `claude --version` - Show version
+- `claude --help` - Full help
+
+## Config Locations
+- Global: `~/.claude/settings.json`
+- Project: `.claude/settings.local.json`
+- Ralph state: `.claude/ralph-loop.local.md`
+
+## Ralph Loop Structure
+Create `.claude/ralph-loop.local.md`:
+```markdown
+---
+active: true
+iteration: 1
+max_iterations: 20
+completion_promise: "TASK COMPLETE"
+started_at: "2026-01-11T22:00:00Z"
+---
+
+Your task description here
+```
+
+## Tips
+- Always work in git repositories
+- Set max_iterations to prevent infinite loops
+- Use completion promises for auto-stop
+- Check `.claude/ralph-loop.local.md` for progress
+- Ralph is built into Claude Code (no separate install needed)
+
+## Common Project Setup
+```bash
+cd my-project
+mkdir -p .claude
+cat > .claude/settings.local.json << 'JSON'
+{
+  "permissions": {
+    "allow": ["Bash", "Read", "Write", "Edit", "Skill(ralph-wiggum:*)"]
+  }
+}
+JSON
+claude
+```
+EOF
+
+ok "Created ~/claude-quick-ref.md"
+
+# ============================================================
+# Phase 7: Verification
+# ============================================================
+echo ""
+log "Phase 7: Verifying Installation"
+echo ""
+
+ERRORS=0
+
+# Check Claude Code
+if command -v claude &>/dev/null; then
+  VERSION=$(claude --version 2>/dev/null || echo "unknown")
+  ok "Claude Code: $VERSION"
+else
+  fail "Claude Code: NOT FOUND"
+  ((ERRORS++))
+fi
+
+# Check essential tools
+for tool in jq git node python3; do
+  if command -v "$tool" &>/dev/null; then
+    ok "$tool: installed"
+  else
+    warn "$tool: not found (optional)"
+  fi
+done
+
+# Check settings
+if [[ -f "$HOME/.claude/settings.json" ]]; then
+  ok "Global settings: exist"
+else
+  fail "Global settings: missing"
+  ((ERRORS++))
+fi
+
+# Check test project
+if [[ -d "$TEST_PROJECT/.claude" ]]; then
+  ok "Test project: configured"
+else
+  warn "Test project: needs configuration"
+fi
+
+# ============================================================
+# Final Instructions
+# ============================================================
+echo ""
+if [[ $ERRORS -eq 0 ]]; then
+  echo -e "${GREEN}╔════════════════════════════════════════════════════════╗${NC}"
+  echo -e "${GREEN}║                  SETUP COMPLETE! ✓                     ║${NC}"
+  echo -e "${GREEN}╚════════════════════════════════════════════════════════╝${NC}"
+else
+  echo -e "${RED}╔════════════════════════════════════════════════════════╗${NC}"
+  echo -e "${RED}║             SETUP COMPLETED WITH ERRORS                ║${NC}"
+  echo -e "${RED}╚════════════════════════════════════════════════════════╝${NC}"
+fi
+
+echo ""
+echo "Next Steps:"
+echo ""
+echo "1. Authenticate Claude Code:"
+echo "   ${BLUE}claude auth login${NC}"
+echo ""
+echo "2. Test it:"
+echo "   ${BLUE}cd ~/test-claude-project${NC}"
+echo "   ${BLUE}claude${NC}"
+echo ""
+echo "3. Try Ralph loop:"
+echo "   ${BLUE}/ralph-loop \"Add a hello function\" --max-iterations 5${NC}"
+echo ""
+echo "4. Read the quick reference:"
+echo "   ${BLUE}cat ~/claude-quick-ref.md${NC}"
+echo ""
+echo "5. Start using in your projects:"
+echo "   ${BLUE}cd /path/to/your/project${NC}"
+echo "   ${BLUE}~/start-claude.sh${NC}"
+echo ""
+
+if [[ $ERRORS -gt 0 ]]; then
+  echo -e "${YELLOW}⚠ Please resolve the errors above before using Claude Code${NC}"
+  exit 1
+fi
+
+echo -e "${GREEN}Ready to build with Claude Code + Ralph! 🚀${NC}"
+echo ""

@@ -1,0 +1,12 @@
+{
+  "name": "designr",
+  "version": "1.0.0",
+  "description": "Designr project with Ralph Wiggum testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
