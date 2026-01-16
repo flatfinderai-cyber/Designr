@@ -84,7 +84,7 @@ export function PRDGenerator() {
   const { prd, setPRD } = usePRDStore();
 
   const handleAnswer = (questionId: string, value: string | string[]) => {
-    setAnswers((prev) => ({
+    setAnswers((prev: Record<string, string | string[]>) => ({
       ...prev,
       [questionId]: value,
     }));

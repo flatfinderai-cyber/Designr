@@ -27,7 +27,9 @@ export function PRDPreview({ answers }: PRDPreviewProps) {
     }
   };
 
-  const featureName = primaryFunctionality
+  const featureName = (
+    typeof primaryFunctionality === "string" ? primaryFunctionality : ""
+  )
     .split(" ")
     .slice(0, 3)
     .join("-")
