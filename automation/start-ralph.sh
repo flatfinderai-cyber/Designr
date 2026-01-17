@@ -62,7 +62,7 @@ if [ -z "$WORKFLOW_NAME" ]; then
     echo "  -y, --yes                 Non-interactive mode (skip prompts)"
     echo ""
     echo "Available workflows:"
-    ls automation/workflows/*.md 2>/dev/null | sed 's/.*\//  - /' | sed 's/-setup\.md$//' || echo "  (none yet)"
+    ls automation/workflows/*.md 2>/dev/null | sed 's|.*/\(.*\)-setup\.md$|  - \1|' || echo "  (none yet)"
     exit 1
 fi
 
@@ -72,7 +72,7 @@ if [ ! -f "$WORKFLOW_FILE" ]; then
     echo "❌ Error: Workflow file not found: $WORKFLOW_FILE"
     echo ""
     echo "Available workflows:"
-    ls automation/workflows/*.md 2>/dev/null | sed 's/.*\//  - /' | sed 's/-setup\.md$//' || echo "  (none yet)"
+    ls automation/workflows/*.md 2>/dev/null | sed 's|.*/\(.*\)-setup\.md$|  - \1|' || echo "  (none yet)"
     echo ""
     echo "Create one with: ./automation/quick-start.sh"
     exit 1

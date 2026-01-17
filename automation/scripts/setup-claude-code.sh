@@ -46,6 +46,10 @@ warn()   { echo -e "${YELLOW}⚠${NC} $1"; }
 # ============================================================
 # Cross-platform package installer helper
 # ============================================================
+# Best-effort package installer that attempts to install packages
+# using available package managers (brew or apt-get).
+# Returns 0 always to allow script to continue even if packages fail.
+# Logs warnings for failures instead of aborting the script.
 install_pkg() {
   local pkg="$1"
   local apt_pkg="${2:-$pkg}"  # Allow custom apt package name
@@ -127,7 +131,7 @@ log "Installing essential tools (jq, git)..."
 install_pkg jq jq
 install_pkg git git
 install_pkg curl curl
-ok "Essential tools installed"
+ok "Essential tools installation attempted"
 
 # ============================================================
 # Phase 2: Claude Code Installation
