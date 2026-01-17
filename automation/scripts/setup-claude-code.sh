@@ -59,8 +59,14 @@ install_pkg() {
     brew install "$pkg" &>/dev/null || { warn "Failed to install $pkg via brew (continuing)"; return 0; }
   elif command -v apt-get &>/dev/null; then
     log "Installing $apt_pkg via apt-get..."
-    sudo apt-get update -qq &>/dev/null || true
-    sudo apt-get install -y "$apt_pkg" &>/dev/null || { warn "Failed to install $apt_pkg via apt-get (continuing)"; return 0; }
+    if command -v sudo &>/dev/null; then
+      sudo apt-get update -qq &>/dev/null || true
+      sudo apt-get install -y "$apt_pkg" &>/dev/null || { warn "Failed to install $apt_pkg via apt-get (continuing)"; return 0; }
+    else
+      # Try without sudo (might work in some container environments)
+      apt-get update -qq &>/dev/null || true
+      apt-get install -y "$apt_pkg" &>/dev/null || { warn "Failed to install $apt_pkg via apt-get (continuing)"; return 0; }
+    fi
   else
     warn "No supported package manager found. Please install $pkg manually."
     return 0
@@ -104,6 +110,8 @@ fi
 if ! command -v brew &>/dev/null; then
   if [[ "$PLATFORM" == "macos" ]]; then
     log "Installing Homebrew..."
+    # Note: This downloads from Homebrew's official installer
+    # Users should verify trust in https://brew.sh before running
     if [[ "$NONINTERACTIVE" == "1" ]]; then
       NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || warn "Homebrew install failed (continuing)"
     else
@@ -146,6 +154,8 @@ else
   log "Downloading and installing Claude Code..."
   
   # Download installer to temp file for safer execution in CI
+  # Note: This downloads from claude.ai - users should verify trust in this source
+  # Consider pinning to a specific version if security is critical
   INSTALLER_URL="https://claude.ai/install.sh"
   INSTALLER_SCRIPT="/tmp/claude-install-$$.sh"
   
