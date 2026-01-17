@@ -1,27 +1,63 @@
 #!/bin/bash
 # Setup a new project with AGENTS.md and Ralph infrastructure
-# Usage: ./setup-ralph-project.sh <project-name> <language> [project-type]
+# Usage: ./setup-ralph-project.sh <project-name> <language> [project-type] [-y|--yes]
 
 set -e
+
+# ============================================================
+# Non-interactive mode detection
+# ============================================================
+NONINTERACTIVE="${NONINTERACTIVE:-0}"
+if [[ "${CI:-false}" == "true" ]]; then
+  NONINTERACTIVE=1
+fi
 
 echo "🤖 Ralph Project Setup Wizard"
 echo ""
 
-# Get project details
-PROJECT_NAME="$1"
-LANGUAGE="$2"
-PROJECT_TYPE="${3:-cli-tool}"
+# Parse arguments
+PROJECT_NAME=""
+LANGUAGE=""
+PROJECT_TYPE=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -y|--yes)
+      NONINTERACTIVE=1
+      shift
+      ;;
+    *)
+      if [[ -z "$PROJECT_NAME" ]]; then
+        PROJECT_NAME="$1"
+      elif [[ -z "$LANGUAGE" ]]; then
+        LANGUAGE="$1"
+      elif [[ -z "$PROJECT_TYPE" ]]; then
+        PROJECT_TYPE="$1"
+      else
+        echo "Unknown argument: $1"
+        exit 1
+      fi
+      shift
+      ;;
+  esac
+done
+
+# Set default project type
+PROJECT_TYPE="${PROJECT_TYPE:-cli-tool}"
 
 if [ -z "$PROJECT_NAME" ] || [ -z "$LANGUAGE" ]; then
-    echo "Usage: $0 <project-name> <language> [project-type]"
+    echo "Usage: $0 <project-name> <language> [project-type] [-y|--yes]"
     echo ""
     echo "Examples:"
     echo "  $0 task-manager python cli-tool"
-    echo "  $0 my-api typescript api"
-    echo "  $0 blog-app javascript web-app"
+    echo "  $0 my-api typescript api -y"
+    echo "  $0 blog-app javascript web-app --yes"
     echo ""
     echo "Supported languages: python, javascript, typescript, rust, go"
     echo "Supported types: cli-tool, web-app, api, library, automation"
+    echo ""
+    echo "Options:"
+    echo "  -y, --yes    Non-interactive mode (auto-accept prompts)"
     exit 1
 fi
 
@@ -32,8 +68,14 @@ echo "Language: $LANGUAGE"
 echo "Type: $PROJECT_TYPE"
 echo "Location: $PROJECT_DIR"
 echo ""
-read -p "Create this project? (y/n) " -n 1 -r
-echo ""
+
+if [[ "$NONINTERACTIVE" == "1" ]]; then
+    echo "Non-interactive mode: proceeding automatically"
+    REPLY="y"
+else
+    read -p "Create this project? (y/n) " -n 1 -r
+    echo ""
+fi
 
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     echo "Cancelled."
