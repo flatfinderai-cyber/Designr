@@ -105,15 +105,20 @@ export function PRDGenerator() {
   };
 
   const handleDownload = () => {
-    if (prd) {
-      const dataStr = JSON.stringify(prd, null, 2);
-      const dataBlob = new Blob([dataStr], { type: "application/json" });
-      const url = URL.createObjectURL(dataBlob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `prd-${prd.branchName}.json`;
-      link.click();
-    }
+    if (!prd) return;
+
+    const dataStr = JSON.stringify(prd, null, 2);
+    const dataBlob = new Blob([dataStr], { type: "application/json" });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = `prd-${prd.branchName}.json`;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   if (showPreview) {
