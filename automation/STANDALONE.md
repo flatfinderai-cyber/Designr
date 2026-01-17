@@ -27,6 +27,20 @@ This guide explains how to use **only** the Designr Automation System without th
 
 If you only want the automation system files:
 
+### Quick Download (Recommended)
+
+Use our helper script to download only the automation system:
+
+```bash
+# Download and run the script
+curl -fsSL https://raw.githubusercontent.com/flatfinderai-cyber/Designr/main/automation/download-automation.sh | bash
+
+# Or download the script first and run it
+curl -O https://raw.githubusercontent.com/flatfinderai-cyber/Designr/main/automation/download-automation.sh
+chmod +x download-automation.sh
+./download-automation.sh main ./my-automation
+```
+
 ### Using Git (Sparse Checkout)
 
 ```bash
@@ -55,12 +69,10 @@ cd automation
 
 1. Go to: https://github.com/flatfinderai-cyber/Designr
 2. Click on the `automation` folder
-3. Click the "Download" button (or use the script below)
-
-Or use this helper script:
+3. Download individual files or use the archive method:
 
 ```bash
-# Download automation directory only
+# Download automation directory only from archive
 curl -L https://github.com/flatfinderai-cyber/Designr/archive/main.tar.gz | \
   tar xz --strip=2 Designr-main/automation
 cd automation

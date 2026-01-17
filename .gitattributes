@@ -1,0 +1,24 @@
+# Git LFS tracking (if needed in future)
+# *.tar.gz filter=lfs diff=lfs merge=lfs -text
+
+# Mark shell scripts as executable
+*.sh text eol=lf
+
+# Export configuration for git archive
+# This ensures automation/ directory can be exported standalone
+automation/ export-subst
+
+# Diff settings for better readability
+*.md diff=markdown
+*.json diff
+
+# Language-specific settings
+*.ts text
+*.js text
+*.py text
+*.md text
+
+# Ensure line endings are consistent
+* text=auto
+*.sh text eol=lf
+*.bash text eol=lf
