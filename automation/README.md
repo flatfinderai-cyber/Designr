@@ -38,15 +38,61 @@ Instead of manually following 20 setup steps, you:
 
 ```
 automation/
-├── README.md                 # This file
-├── STANDALONE.md             # Standalone usage guide
-├── HOW-TO-USE.md             # Detailed instructions
-├── AUTO-ACCEPT-SETUP.md      # Ralph configuration
-├── quick-start.sh            # Quick start script
-├── start-ralph.sh            # Start Ralph automation
-├── templates/                # Setup templates for common tools
-├── workflows/                # Your custom setup workflows
-└── scripts/                  # Helper scripts
-    ├── extract-standalone.sh # Extract automation only
-    └── ...                   # Other helper scripts
+├── README.md                  # This file - Overview
+├── STANDALONE.md              # Standalone usage guide
+├── HOW-TO-USE.md              # Detailed step-by-step instructions
+├── QUICK-REFERENCE.md         # Quick reference cheat sheet
+├── AUTO-ACCEPT-SETUP.md       # Ralph auto-accept configuration
+├── quick-start.sh             # Create new automation workflow
+├── start-ralph.sh             # Start Ralph automation loop
+├── download-automation.sh     # One-command download script
+├── templates/                 # Setup templates
+│   └── setup-template.md      # Template for new workflows
+├── workflows/                 # Your automation workflows
+│   ├── example-nodejs-setup.md
+│   └── claude-code-setup.md
+└── scripts/                   # Helper scripts
+    ├── extract-standalone.sh  # Extract automation as standalone
+    ├── setup-claude-code.sh   # Setup Claude Code CLI
+    ├── setup-ralph-project.sh # Setup Ralph project
+    └── verify-installation.sh # Verify tool installation
 ```
+
+## Quick Start
+
+```bash
+# Create a new automation workflow
+./quick-start.sh my-tool
+
+# Edit the workflow file with your setup steps
+vim workflows/my-tool-setup.md
+
+# Start Ralph to execute the automation
+./start-ralph.sh my-tool
+```
+
+## Documentation
+
+- **[QUICK-REFERENCE.md](QUICK-REFERENCE.md)** - Quick reference cheat sheet
+- **[HOW-TO-USE.md](HOW-TO-USE.md)** - Detailed usage guide with examples
+- **[STANDALONE.md](STANDALONE.md)** - Standalone installation options
+- **[AUTO-ACCEPT-SETUP.md](AUTO-ACCEPT-SETUP.md)** - Ralph configuration
+
+## Features
+
+✅ **Automated Setup** - Let Ralph execute setup instructions automatically  
+✅ **Error Recovery** - Ralph debugs and fixes failures automatically  
+✅ **Verification** - Each step is verified before moving forward  
+✅ **Iterative** - Ralph keeps trying until everything works  
+✅ **Portable** - Fully standalone, works anywhere  
+✅ **Cloud-Ready** - Pre-configured for GitHub Codespaces
+
+## Examples
+
+See [`workflows/example-nodejs-setup.md`](workflows/example-nodejs-setup.md) for a complete example of automating a Node.js environment setup.
+
+## Support
+
+- **Quick Questions?** Check [QUICK-REFERENCE.md](QUICK-REFERENCE.md)
+- **Detailed Help?** Read [HOW-TO-USE.md](HOW-TO-USE.md)
+- **Examples?** Browse [`workflows/`](workflows/) directory
