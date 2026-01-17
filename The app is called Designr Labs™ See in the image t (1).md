@@ -1,10 +1,7 @@
 <img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
 
-# The app is called Designr Labs™ See in the image the color wheel? I need that.  Also did you put the feature where the AI. first of all, there's an AI chat entry just like there is here at the bottom of the Perplexity app. is multimodal, exactly like the bottom of the Perplexity app. The user will either enter a URL, upload an image, or provide a 30-second video clip that shows an animation, feature, component, layout, or color scheme. The AI will draw inferences from that input and recreate it and make it work, either by creating the prompt or, better yet, by directly recreating it and making it functional.
 
-Perfect! Now I see what you need. Let me update the **Designr Labs™** feature list to include the **color wheel UI** (like Concepts app) and the **Perplexity-style multimodal AI chat** at the bottom that accepts URLs, images, and 30-second video clips to extract and recreate design elements.
 
-***
 
 ## **Updated Designr Labs™ Feature List**
 
@@ -394,106 +391,4 @@ Your task is to build Designr Labs™—an AI-powered design tool with:
 
 Output <promise>DESIGNR LABS MVP COMPLETE</promise> when all core features work.
 ```
-
-
-***
-
-This gives you the **Concepts-style color wheel**  and the **Perplexity-style multimodal AI chat**  that accepts URLs, images, and video clips to recreate designs automatically. The AI can now **draw inferences** from any input type and either generate prompts or **directly recreate functional components** on the canvas.[^9][^10][^1][^3][^6][^8][^7][^5][^4][^2]
-<span style="display:none">[^11][^12][^13][^14][^15][^16][^17][^18][^19][^20][^21][^22][^23][^24][^25][^26][^27][^28][^29][^30][^31][^32][^33][^34][^35][^36][^37][^38][^39][^40][^41][^42][^43][^44][^45][^46][^47]</span>
-
-<div align="center">⁂</div>
-
-[^1]: concepts.app_en.jpeg
-
-[^2]: https://apps.apple.com/us/app/color-wheel-palette-colorgear/id1598308010
-
-[^3]: https://www.datastudios.org/post/perplexity-ai-and-voice-conversation-features-live-queries-and-real-time-responses
-
-[^4]: https://www.lennysnewsletter.com/p/a-guide-to-ai-prototyping-for-product
-
-[^5]: https://lumalabs.ai/video-to-video/restyle-scene-from-real-to-cartoon
-
-[^6]: https://www.youtube.com/watch?v=1vQh3V2cLPk
-
-[^7]: https://www.lennysnewsletter.com/p/a-designers-guide-to-ai-building
-
-[^8]: https://www.lennysnewsletter.com/p/a-designers-guide-to-cursor-how-to
-
-[^9]: https://www.figma.com/color-wheel/
-
-[^10]: https://www.perplexity.ai
-
-[^11]: research-ai-design-tools-featu-T2Kwq0LfR562zJB1UMnJPQ.md
-
-[^12]: image.jpg
-
-[^13]: image.jpg
-
-[^14]: ralph-setup-template.md
-
-[^15]: ralph-wiggum-as-a-software-engineer-2026-01-13.md
-
-[^16]: concepts.app_en_ios_manual_yourworkspace.jpg
-
-[^17]: https://arxiv.org/abs/2401.15032
-
-[^18]: https://arxiv.org/pdf/1903.06490.pdf
-
-[^19]: https://www.jstatsoft.org/index.php/jss/article/view/v096i01/v96i01.pdf
-
-[^20]: https://arxiv.org/html/2409.13900v1
-
-[^21]: https://arxiv.org/pdf/2102.02041.pdf
-
-[^22]: https://arxiv.org/html/2406.16177v1
-
-[^23]: https://dx.plos.org/10.1371/journal.pone.0290923
-
-[^24]: https://dl.acm.org/doi/pdf/10.1145/3640543.3645176
-
-[^25]: https://apps.apple.com/ca/app/color-wheel-color-schemes/id1235146435
-
-[^26]: https://apps.apple.com/ca/app/color-wheel/id1449736609
-
-[^27]: https://apps.apple.com/us/app/color-wheel/id1453592782
-
-[^28]: https://www.reddit.com/r/minipainting/comments/1iogrrf/good_colour_theorycolour_wheel_app_for_minisios/
-
-[^29]: https://colorslurp.com
-
-[^30]: https://www.reddit.com/r/perplexity_ai/comments/1b7yojm/what_is_an_advantage_for_perplexity_now_that_chat/
-
-[^31]: https://www.animaker.com
-
-[^32]: https://apps.apple.com/md/app/colour-palette-wheel-theory/id1598308010
-
-[^33]: https://docs.perplexity.ai/guides/chat-completions-sdk
-
-[^34]: https://www.lennysnewsletter.com/p/a-designers-guide-to-ai-building/comments
-
-[^35]: https://www.lennysnewsletter.com/p/35-years-of-product-design-wisdom-bob-baxley/comments
-
-[^36]: https://www.lennysnewsletter.com/p/a-designers-guide-to-ai-building?autoPlay=true
-
-[^37]: https://www.lennysnewsletter.com/p/pms-who-use-ai-will-replace-those
-
-[^38]: https://www.lennysnewsletter.com/p/community-wisdom-tools-to-capture
-
-[^39]: https://www.lennysnewsletter.com/p/how-to-use-perplexity-in-your-pm
-
-[^40]: https://lennysnewsletter.com
-
-[^41]: https://www.lennysnewsletter.com/p/how-perplexity-builds-product
-
-[^42]: https://www.lennysnewsletter.com/p/community-wisdom-tools-for-collecting
-
-[^43]: https://www.lennysnewsletter.com/p/how-this-yelp-ai-pm-works-backward
-
-[^44]: https://www.lennysnewsletter.com/p/community-wisdom-analytics-for-early
-
-[^45]: https://www.lennysnewsletter.com/p/how-to-use-perplexity-in-your-pm/comments
-
-[^46]: https://docs.perplexity.ai/cookbook/showcase/perplexity-client
-
-[^47]: https://www.typingmind.com/guide/use-perplexity-api-key-to-chat-with-ai
 
