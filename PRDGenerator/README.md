@@ -83,7 +83,7 @@ Ralph-loop will:
 2. Execute one story per iteration
 3. Run quality gates automatically
 4. Mark stories complete when passing
-5. Continue until all stories done
+5. Continue until all stories are done
 
 ## Architecture
 
