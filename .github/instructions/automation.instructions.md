@@ -24,7 +24,7 @@ Every workflow must include:
 2. **Step-by-step instructions** with clear commands
 3. **Verification steps** for each command
 4. **Success criteria** checklist
-5. **Completion promise** (e.g., `<promise>SETUP COMPLETE</promise>`)
+5. **Completion promise** - tool-specific (e.g., `<promise>DOCKER SETUP COMPLETE</promise>`, `<promise>NODE.JS ENVIRONMENT READY</promise>`)
 
 ## Code Style for Automation
 
@@ -58,10 +58,16 @@ WORKFLOW_NAME=$(echo "$WORKFLOW_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 
 ### Creating New Workflows
 ```bash
-./automation/quick-start.sh <tool-name>
-# Edit automation/workflows/<tool-name>-setup.md
+# Run interactive script (prompts for tool name)
+./automation/quick-start.sh
+
+# Edit generated workflow file
+# automation/workflows/<workflow-name>-setup.md
+
 # Add detailed steps with verification
-./automation/start-ralph.sh <tool-name>
+
+# Start Ralph loop with workflow name (without -setup.md suffix)
+./automation/start-ralph.sh <workflow-name>
 ```
 
 ### Verification Commands
@@ -116,7 +122,7 @@ chmod +x automation/scripts/your-script.sh
 
 ## File Naming Conventions
 
-- Workflow files: `<tool-name>-setup.md` (e.g., `docker-setup.md`)
+- Workflow files: `<workflow-name>-setup.md` where workflow-name can be multi-word kebab-case (e.g., `docker-setup.md`, `claude-code-setup.md`, `example-nodejs-setup.md`)
 - Scripts: `kebab-case.sh` (e.g., `start-ralph.sh`)
 - Templates: `descriptive-name-template.md`
 
@@ -152,8 +158,8 @@ chmod +x automation/scripts/your-script.sh
 - Scripts run with user permissions
 - No secrets in workflow files
 - Use environment variables for sensitive data
-- Review auto-accept permissions carefully
-- Git commits are automatic (use .gitignore properly)
+- Review auto-accept permissions carefully (see AUTO-ACCEPT-SETUP.md)
+- Ralph uses `report_progress` tool which commits to git - not automatic in automation scripts
 
 ## Performance Notes
 
