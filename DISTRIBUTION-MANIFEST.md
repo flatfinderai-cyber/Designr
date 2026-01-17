@@ -188,7 +188,7 @@ CMD ["npm", "start"]
 ## 🔗 Integration & APIs
 
 ### Supabase Connection
-All apps connect to same Supabase instance:
+All apps connect to the same Supabase instance:
 ```
 Database: PostgreSQL
 Auth: Supabase Auth
