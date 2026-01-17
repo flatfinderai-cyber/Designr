@@ -1,5 +1,7 @@
 # Designr - Automated Invention & Development System
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/flatfinderai-cyber/Designr)
+
 **Build digital inventions 10x faster with Ralph Wiggum automation.**
 
 ---
@@ -11,6 +13,22 @@ A complete system for automating the development of:
 2. **Dev tool setups** - Complex installation/configuration workflows
 
 Both use **Ralph Wiggum loops** to automatically build, test, debug, and iterate.
+
+---
+
+## 🚀 Access Options
+
+### 1. GitHub Codespaces (Cloud)
+Click the badge above to open in a pre-configured development environment. No local setup required!
+
+### 2. Download Automation Only
+Want just the dev tool automation system? See [`automation/STANDALONE.md`](automation/STANDALONE.md)
+
+### 3. Clone Full Repository
+```bash
+git clone https://github.com/flatfinderai-cyber/Designr.git
+cd Designr
+```
 
 ---
 

@@ -1,6 +1,23 @@
 # Dev Tool Setup Automation System
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/flatfinderai-cyber/Designr)
+
 This system uses Ralph Wiggum loops to automatically install and configure development tools based on written instructions.
+
+---
+
+## 🚀 Quick Start Options
+
+### Option 1: GitHub Codespaces (Recommended)
+Click the badge above to open in a pre-configured cloud environment. No local setup required!
+
+### Option 2: Download Automation Only
+See **[STANDALONE.md](STANDALONE.md)** for instructions on using just the automation system.
+
+### Option 3: Use Full Repository
+Clone the entire repository to access all Designr systems.
+
+---
 
 ## How It Works
 
@@ -22,7 +39,14 @@ Instead of manually following 20 setup steps, you:
 ```
 automation/
 ├── README.md                 # This file
-├── templates/               # Setup templates for common tools
-├── workflows/               # Your custom setup workflows
-└── scripts/                 # Helper scripts for verification
+├── STANDALONE.md             # Standalone usage guide
+├── HOW-TO-USE.md             # Detailed instructions
+├── AUTO-ACCEPT-SETUP.md      # Ralph configuration
+├── quick-start.sh            # Quick start script
+├── start-ralph.sh            # Start Ralph automation
+├── templates/                # Setup templates for common tools
+├── workflows/                # Your custom setup workflows
+└── scripts/                  # Helper scripts
+    ├── extract-standalone.sh # Extract automation only
+    └── ...                   # Other helper scripts
 ```
