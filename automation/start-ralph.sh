@@ -1,19 +1,68 @@
 #!/bin/bash
 # Start a Ralph loop for automated setup
+# Usage: ./start-ralph.sh <workflow-name> [--promise PROMISE] [--max-iterations N] [-y|--yes]
 
 set -e
 
-WORKFLOW_NAME="${1:-}"
+# ============================================================
+# Non-interactive mode detection and defaults
+# ============================================================
+NONINTERACTIVE="${NONINTERACTIVE:-0}"
+if [[ "${CI:-false}" == "true" ]]; then
+  NONINTERACTIVE=1
+fi
+
+# Default values
+PROMISE=""
+MAX_ITER=""
+WORKFLOW_NAME=""
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --promise)
+      PROMISE="$2"
+      shift 2
+      ;;
+    --max-iterations)
+      MAX_ITER="$2"
+      shift 2
+      ;;
+    -y|--yes)
+      NONINTERACTIVE=1
+      shift
+      ;;
+    -*)
+      echo "Unknown option: $1"
+      echo "Usage: $0 <workflow-name> [--promise PROMISE] [--max-iterations N] [-y|--yes]"
+      exit 1
+      ;;
+    *)
+      if [[ -z "$WORKFLOW_NAME" ]]; then
+        WORKFLOW_NAME="$1"
+      else
+        echo "Error: Multiple workflow names provided"
+        exit 1
+      fi
+      shift
+      ;;
+  esac
+done
 
 if [ -z "$WORKFLOW_NAME" ]; then
     echo "❌ Error: No workflow name provided"
     echo ""
-    echo "Usage: ./automation/start-ralph.sh <workflow-name>"
+    echo "Usage: ./automation/start-ralph.sh <workflow-name> [--promise PROMISE] [--max-iterations N] [-y|--yes]"
     echo ""
-    echo "Example: ./automation/start-ralph.sh nodejs"
+    echo "Example: ./automation/start-ralph.sh nodejs --promise 'NODE.JS ENVIRONMENT READY' --max-iterations 20"
+    echo ""
+    echo "Options:"
+    echo "  --promise PROMISE         Completion promise (default: 'SETUP COMPLETE')"
+    echo "  --max-iterations N        Maximum iterations (default: 20)"
+    echo "  -y, --yes                 Non-interactive mode (skip prompts)"
     echo ""
     echo "Available workflows:"
-    ls automation/workflows/*.md 2>/dev/null | sed 's/.*\//  - /' || echo "  (none yet)"
+    ls automation/workflows/*.md 2>/dev/null | sed 's|.*/\(.*\)-setup\.md$|  - \1|' || echo "  (none yet)"
     exit 1
 fi
 
@@ -23,25 +72,39 @@ if [ ! -f "$WORKFLOW_FILE" ]; then
     echo "❌ Error: Workflow file not found: $WORKFLOW_FILE"
     echo ""
     echo "Available workflows:"
-    ls automation/workflows/*.md 2>/dev/null | sed 's/.*\//  - /' || echo "  (none yet)"
+    ls automation/workflows/*.md 2>/dev/null | sed 's|.*/\(.*\)-setup\.md$|  - \1|' || echo "  (none yet)"
     echo ""
     echo "Create one with: ./automation/quick-start.sh"
     exit 1
 fi
 
-# Get completion promise from user
-read -p "Completion promise (or press Enter for 'SETUP COMPLETE'): " PROMISE
-PROMISE="${PROMISE:-SETUP COMPLETE}"
+# Set defaults if not provided
+if [[ -z "$PROMISE" ]]; then
+  if [[ "$NONINTERACTIVE" == "1" ]]; then
+    PROMISE="SETUP COMPLETE"
+  else
+    read -p "Completion promise (or press Enter for 'SETUP COMPLETE'): " PROMISE
+    PROMISE="${PROMISE:-SETUP COMPLETE}"
+  fi
+fi
 
-# Get max iterations
-read -p "Max iterations (default: 20): " MAX_ITER
-MAX_ITER="${MAX_ITER:-20}"
+if [[ -z "$MAX_ITER" ]]; then
+  if [[ "$NONINTERACTIVE" == "1" ]]; then
+    MAX_ITER="20"
+  else
+    read -p "Max iterations (default: 20): " MAX_ITER
+    MAX_ITER="${MAX_ITER:-20}"
+  fi
+fi
 
 echo ""
 echo "🔄 Starting Ralph loop for: $WORKFLOW_NAME"
 echo "   Workflow: $WORKFLOW_FILE"
 echo "   Max iterations: $MAX_ITER"
 echo "   Completion promise: $PROMISE"
+if [[ "$NONINTERACTIVE" == "1" ]]; then
+  echo "   Mode: Non-interactive"
+fi
 echo ""
 
 # Create Ralph loop state

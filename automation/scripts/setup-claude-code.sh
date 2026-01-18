@@ -1,12 +1,35 @@
 #!/usr/bin/env bash
 #
 # Claude Code + Ralph Plugin - Complete Setup Script
-# Works on macOS and Linux
+# Works on macOS and Linux, CI-friendly and non-interactive mode supported
 #
-# Usage: ./setup-claude-code.sh
+# Usage: ./setup-claude-code.sh [-y|--yes]
 #
 
 set -euo pipefail
+
+# ============================================================
+# Non-interactive mode detection
+# ============================================================
+NONINTERACTIVE="${NONINTERACTIVE:-0}"
+if [[ "${CI:-false}" == "true" ]]; then
+  NONINTERACTIVE=1
+fi
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -y|--yes)
+      NONINTERACTIVE=1
+      shift
+      ;;
+    *)
+      echo "Unknown option: $1"
+      echo "Usage: $0 [-y|--yes]"
+      exit 1
+      ;;
+  esac
+done
 
 # Colors for output
 GREEN='\033[0;32m'
@@ -19,6 +42,37 @@ log()    { echo -e "${BLUE}▶${NC} $1"; }
 ok()     { echo -e "${GREEN}✓${NC} $1"; }
 fail()   { echo -e "${RED}✗${NC} $1"; }
 warn()   { echo -e "${YELLOW}⚠${NC} $1"; }
+
+# ============================================================
+# Cross-platform package installer helper
+# ============================================================
+# Best-effort package installer that attempts to install packages
+# using available package managers (brew or apt-get).
+# Returns 0 always to allow script to continue even if packages fail.
+# Logs warnings for failures instead of aborting the script.
+install_pkg() {
+  local pkg="$1"
+  local apt_pkg="${2:-$pkg}"  # Allow custom apt package name
+  
+  if command -v brew &>/dev/null; then
+    log "Installing $pkg via Homebrew..."
+    brew install "$pkg" &>/dev/null || { warn "Failed to install $pkg via brew (continuing)"; return 0; }
+  elif command -v apt-get &>/dev/null; then
+    log "Installing $apt_pkg via apt-get..."
+    if command -v sudo &>/dev/null; then
+      sudo apt-get update -qq &>/dev/null || true
+      sudo apt-get install -y "$apt_pkg" &>/dev/null || { warn "Failed to install $apt_pkg via apt-get (continuing)"; return 0; }
+    else
+      # Try without sudo (might work in some container environments)
+      apt-get update -qq &>/dev/null || true
+      apt-get install -y "$apt_pkg" &>/dev/null || { warn "Failed to install $apt_pkg via apt-get (continuing)"; return 0; }
+    fi
+  else
+    warn "No supported package manager found. Please install $pkg manually."
+    return 0
+  fi
+  ok "$pkg installed"
+}
 
 # ============================================================
 # Detect OS
@@ -54,15 +108,27 @@ fi
 
 # Homebrew
 if ! command -v brew &>/dev/null; then
-  log "Installing Homebrew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  if [[ "$PLATFORM" == "macos" ]]; then
+    log "Installing Homebrew..."
+    # Note: This downloads from Homebrew's official installer
+    # Users should verify trust in https://brew.sh before running
+    if [[ "$NONINTERACTIVE" == "1" ]]; then
+      NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || warn "Homebrew install failed (continuing)"
+    else
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
 
-  # Add to PATH
-  if [[ -f "$HOME/.zprofile" ]]; then
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
-    eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null || true
+    # Add to PATH
+    if [[ -f "$HOME/.zprofile" ]]; then
+      if ! grep -q "/opt/homebrew/bin/brew" "$HOME/.zprofile" 2>/dev/null; then
+        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
+      fi
+      eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null || true
+    fi
+    ok "Homebrew installed"
+  else
+    warn "Homebrew not available on Linux (will use apt-get where available)"
   fi
-  ok "Homebrew installed"
 else
   ok "Homebrew already installed"
   brew update &>/dev/null || true
@@ -70,8 +136,10 @@ fi
 
 # Essential tools
 log "Installing essential tools (jq, git)..."
-brew install jq git curl &>/dev/null || true
-ok "Essential tools installed"
+install_pkg jq jq
+install_pkg git git
+install_pkg curl curl
+ok "Essential tools installation attempted"
 
 # ============================================================
 # Phase 2: Claude Code Installation
@@ -84,7 +152,24 @@ if command -v claude &>/dev/null; then
   ok "Claude Code already installed: $(claude --version 2>/dev/null || echo 'unknown version')"
 else
   log "Downloading and installing Claude Code..."
-  curl -fsSL https://claude.ai/install.sh | bash
+  
+  # Download installer to temp file for safer execution in CI
+  # Note: This downloads from claude.ai - users should verify trust in this source
+  # Consider pinning to a specific version if security is critical
+  INSTALLER_URL="https://claude.ai/install.sh"
+  INSTALLER_SCRIPT="/tmp/claude-install-$$.sh"
+  
+  if curl -fsSL "$INSTALLER_URL" -o "$INSTALLER_SCRIPT" 2>/dev/null; then
+    chmod +x "$INSTALLER_SCRIPT"
+    if [[ "$NONINTERACTIVE" == "1" ]]; then
+      NONINTERACTIVE=1 bash "$INSTALLER_SCRIPT" || warn "Claude Code installer failed (continuing to verification)"
+    else
+      bash "$INSTALLER_SCRIPT"
+    fi
+    rm -f "$INSTALLER_SCRIPT"
+  else
+    warn "Could not download Claude Code installer from $INSTALLER_URL (continuing to verification)"
+  fi
 
   # Add to PATH
   if [[ -n "${ZDOTDIR:-}" ]] && [[ -f "$ZDOTDIR/.zshrc" ]]; then
@@ -106,7 +191,12 @@ else
   fi
 
   export PATH="$HOME/.claude/bin:$PATH"
-  ok "Claude Code installed"
+  
+  if command -v claude &>/dev/null; then
+    ok "Claude Code installed"
+  else
+    warn "Claude Code command not found after install attempt"
+  fi
 fi
 
 # ============================================================
@@ -188,35 +278,30 @@ echo ""
 
 # Node.js
 if ! command -v node &>/dev/null; then
-  log "Installing Node.js..."
-  brew install node &>/dev/null || true
-  ok "Node.js installed"
+  install_pkg node nodejs
 else
   ok "Node.js already installed: $(node --version)"
 fi
 
 # Python
 if ! command -v python3 &>/dev/null; then
-  log "Installing Python..."
-  brew install python@3.11 &>/dev/null || true
-  ok "Python installed"
+  install_pkg python@3.11 python3
 else
   ok "Python already installed: $(python3 --version)"
 fi
 
 # GitHub CLI
 if ! command -v gh &>/dev/null; then
-  log "Installing GitHub CLI..."
-  brew install gh &>/dev/null || true
-  ok "GitHub CLI installed"
+  install_pkg gh gh
 else
   ok "GitHub CLI already installed"
 fi
 
 # Other useful tools
 log "Installing additional utilities..."
-brew install tree ripgrep fd &>/dev/null || true
-ok "Additional utilities installed"
+install_pkg tree tree
+install_pkg ripgrep ripgrep
+install_pkg fd fd-find  # Debian uses fd-find package name
 
 # ============================================================
 # Phase 6: Helper Scripts & Documentation
@@ -361,30 +446,37 @@ else
 fi
 
 echo ""
-echo "Next Steps:"
-echo ""
-echo "1. Authenticate Claude Code:"
-echo "   ${BLUE}claude auth login${NC}"
-echo ""
-echo "2. Test it:"
-echo "   ${BLUE}cd ~/test-claude-project${NC}"
-echo "   ${BLUE}claude${NC}"
-echo ""
-echo "3. Try Ralph loop:"
-echo "   ${BLUE}/ralph-loop \"Add a hello function\" --max-iterations 5${NC}"
-echo ""
-echo "4. Read the quick reference:"
-echo "   ${BLUE}cat ~/claude-quick-ref.md${NC}"
-echo ""
-echo "5. Start using in your projects:"
-echo "   ${BLUE}cd /path/to/your/project${NC}"
-echo "   ${BLUE}~/start-claude.sh${NC}"
-echo ""
+
+if [[ "$NONINTERACTIVE" != "1" ]]; then
+  echo "Next Steps:"
+  echo ""
+  echo "1. Authenticate Claude Code:"
+  echo "   ${BLUE}claude auth login${NC}"
+  echo ""
+  echo "2. Test it:"
+  echo "   ${BLUE}cd ~/test-claude-project${NC}"
+  echo "   ${BLUE}claude${NC}"
+  echo ""
+  echo "3. Try Ralph loop:"
+  echo "   ${BLUE}/ralph-loop \"Add a hello function\" --max-iterations 5${NC}"
+  echo ""
+  echo "4. Read the quick reference:"
+  echo "   ${BLUE}cat ~/claude-quick-ref.md${NC}"
+  echo ""
+  echo "5. Start using in your projects:"
+  echo "   ${BLUE}cd /path/to/your/project${NC}"
+  echo "   ${BLUE}~/start-claude.sh${NC}"
+  echo ""
+fi
 
 if [[ $ERRORS -gt 0 ]]; then
-  echo -e "${YELLOW}⚠ Please resolve the errors above before using Claude Code${NC}"
+  if [[ "$NONINTERACTIVE" != "1" ]]; then
+    echo -e "${YELLOW}⚠ Please resolve the errors above before using Claude Code${NC}"
+  fi
   exit 1
 fi
 
-echo -e "${GREEN}Ready to build with Claude Code + Ralph! 🚀${NC}"
-echo ""
+if [[ "$NONINTERACTIVE" != "1" ]]; then
+  echo -e "${GREEN}Ready to build with Claude Code + Ralph! 🚀${NC}"
+  echo ""
+fi
