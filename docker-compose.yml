@@ -29,8 +29,8 @@ services:
     environment:
       NODE_ENV: development
       NEXT_PUBLIC_SUPABASE_URL: http://supabase:8000
-      NEXT_PUBLIC_SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-      SUPABASE_SERVICE_ROLE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: your-supabase-anon-key-here
+      SUPABASE_SERVICE_ROLE_KEY: your-supabase-service-role-key-here
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
     depends_on:
@@ -63,7 +63,7 @@ services:
     environment:
       POSTGRES_DB: designr
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: designr
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -79,8 +79,8 @@ services:
       - "8000:8000"
       - "5433:5432"
     environment:
-      POSTGRES_PASSWORD: designr
-      JWT_SECRET: your-super-secret-jwt-token-change-this
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
       SITE_URL: http://localhost:3000
       API_EXTERNAL_URL: http://localhost:8000
     depends_on:
