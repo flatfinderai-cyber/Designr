@@ -47,7 +47,7 @@ Main Designr repo has 5+ apps/projects mixed in with automation system. Need cle
 - `REPO-STRUCTURE.md`
 - `rube-goldberg-setup-template.md`
 - `rube-goldberg-machine-as-a-software-engineer-2026-01-13.md`
-- `RALPH-AGENTS-SETUP-GUIDE.md`
+- `RUBE-GOLDBERG-AGENTS-SETUP-GUIDE.md`
 - `automation/` directory
 - `inventions/` directory
 - `docs/` directory
