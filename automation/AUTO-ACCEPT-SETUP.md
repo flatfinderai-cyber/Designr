@@ -42,7 +42,7 @@ Edit `.claude/settings.local.json` in your project:
       "Read",
       "Write",
       "Edit",
-      "Skill(ralph-wiggum:*)"
+      "Skill(rube-goldberg-wiggum:*)"
     ]
   }
 }
@@ -121,7 +121,7 @@ cat > .claude/settings.local.json << 'EOF'
       "Edit",
       "Glob",
       "Grep",
-      "Skill(ralph-wiggum:*)",
+      "Skill(rube-goldberg-wiggum:*)",
       "Skill(*)",
       "Task",
       "TodoWrite"
@@ -183,16 +183,16 @@ EOF
 ### Allow specific skills:
 ```json
 "allow": [
-  "Skill(ralph-wiggum:*)",
+  "Skill(rube-goldberg-wiggum:*)",
   "Skill(commit-commands:*)"
 ]
 ```
 
 ---
 
-## For Ralph Automation
+## For Rube Goldberg Automation
 
-Ralph needs these permissions at minimum:
+Rube Goldberg needs these permissions at minimum:
 
 ```json
 {
@@ -203,7 +203,7 @@ Ralph needs these permissions at minimum:
       "Read",
       "Write",
       "Edit",
-      "Skill(ralph-wiggum:*)"
+      "Skill(rube-goldberg-wiggum:*)"
     ]
   }
 }
@@ -252,7 +252,7 @@ cat > .claude/settings.local.json << 'EOF'
       "Edit",
       "Glob",
       "Grep",
-      "Skill(ralph-wiggum:*)",
+      "Skill(rube-goldberg-wiggum:*)",
       "Task",
       "TodoWrite"
     ]
@@ -320,7 +320,7 @@ EOF
 echo '{"permissions":{"defaultMode":"dontAsk","allow":["Bash","Read","Write","Edit","Skill(*)"]}}' > ~/.claude/settings.json
 
 # Or just this project
-echo '{"permissions":{"defaultMode":"dontAsk","allow":["Bash","Read","Write","Edit","Skill(ralph-wiggum:*)"]}}' > .claude/settings.local.json
+echo '{"permissions":{"defaultMode":"dontAsk","allow":["Bash","Read","Write","Edit","Skill(rube-goldberg-wiggum:*)"]}}' > .claude/settings.local.json
 ```
 
 **Now Claude won't ask for permission during automation! 🚀**

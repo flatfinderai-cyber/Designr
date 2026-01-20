@@ -2,13 +2,13 @@
 
 ## Project Context
 
-Designr is an automated invention and development system using Ralph Wiggum iterative loops to build digital inventions 10x faster. This meta-project creates the infrastructure for zero-intervention software development.
+Designr is an automated invention and development system using Rube Goldberg iterative loops to build digital inventions 10x faster. This meta-project creates the infrastructure for zero-intervention software development.
 
 ## Repository Structure
 
 ```
 Designr/
-├── automation/          # Dev tool setup automation system (Ralph-powered)
+├── automation/          # Dev tool setup automation system (Rube Goldberg-powered)
 ├── inventions/         # Invention specifications and workflows
 ├── docs/              # Documentation
 └── src/               # Source code
@@ -54,16 +54,16 @@ ls -l automation/scripts/*.sh
 # Create new automation workflow
 ./automation/quick-start.sh <workflow-name>
 
-# Start Ralph loop for automation
-./automation/start-ralph.sh <workflow-name>
+# Start Rube Goldberg loop for automation
+./automation/start-rube-goldberg.sh <workflow-name>
 
-# Monitor Ralph progress
-grep '^iteration:' .claude/ralph-loop.local.md
+# Monitor Rube Goldberg progress
+grep '^iteration:' .claude/rube-goldberg-loop.local.md
 ```
 
 ## Important Notes
 
-- Ralph Wiggum loops are the core automation mechanism
+- Rube Goldberg loops are the core automation mechanism
 - All scripts must work from project root
 - Git commits happen automatically via `report_progress`
 - Specifications must be detailed and specific (not vague)

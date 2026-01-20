@@ -10,11 +10,11 @@ You engineer solutions to problems. You identify pain points, design solutions, 
 
 ## What You Have Now
 
-A complete system that takes your digital invention ideas and builds them automatically using Ralph Wiggum loops.
+A complete system that takes your digital invention ideas and builds them automatically using Rube Goldberg loops.
 
 ```
 Your Role: Engineer the solution (identify problem, design approach)
-Ralph's Role: Build the implementation (write code, test, iterate)
+Rube Goldberg's Role: Build the implementation (write code, test, iterate)
 ```
 
 ---
@@ -49,17 +49,17 @@ CLI tool that saves clipboard history automatically
 5. Test and verify
 ```
 
-### 2. Start Ralph (1 min)
+### 2. Start Rube Goldberg (1 min)
 
 ```bash
 ./inventions/scripts/start-invention.sh my-invention-name
 ```
 
-Ralph reads your spec and starts building.
+Rube Goldberg reads your spec and starts building.
 
-### 3. Let Ralph Work (15-30 iterations)
+### 3. Let Rube Goldberg Work (15-30 iterations)
 
-Ralph will:
+Rube Goldberg will:
 - ✅ Read your specification
 - ✅ Build step-by-step
 - ✅ Test each component
@@ -68,12 +68,12 @@ Ralph will:
 
 **Monitor progress:**
 ```bash
-grep '^iteration:' .claude/ralph-loop.local.md
+grep '^iteration:' .claude/rube-goldberg-loop.local.md
 ```
 
 ### 4. Review the Prototype (5 min)
 
-When Ralph outputs `<promise>INVENTION COMPLETE</promise>`:
+When Rube Goldberg outputs `<promise>INVENTION COMPLETE</promise>`:
 - Test it yourself
 - Verify it solves the problem
 - Decide: ship it, iterate more, or move to next invention
@@ -91,12 +91,12 @@ I've included a complete example: **Smart Clipboard Manager**
 cat inventions/active/example-smart-clipboard.md
 ```
 
-**Build it with Ralph:**
+**Build it with Rube Goldberg:**
 ```bash
 ./inventions/scripts/start-invention.sh example-smart-clipboard
 ```
 
-Ralph will build a working CLI clipboard history tool!
+Rube Goldberg will build a working CLI clipboard history tool!
 
 ---
 
@@ -123,7 +123,7 @@ CLI tool that auto-saves clipboard history
 User can retrieve any previously copied item
 ```
 
-### Ralph Builds It (automatic)
+### Rube Goldberg Builds It (automatic)
 ```
 Iteration 1: Setup Python project ✓
 Iteration 2: Install pyperclip ✓
@@ -200,7 +200,7 @@ inventions/
 
 1. **Capture** all ideas quickly in `ideas/`
 2. **Prioritize** best ideas → move to `active/`
-3. **Automate** with Ralph (build 3-5 in parallel)
+3. **Automate** with Rube Goldberg (build 3-5 in parallel)
 4. **Review** completed prototypes
 5. **Ship or iterate** on best ones
 
@@ -228,9 +228,9 @@ All run simultaneously!
 - High frustration (debugging takes forever)
 - Many abandoned (too complex/tedious)
 
-### With Ralph:
+### With Rube Goldberg:
 - 5-10 prototypes per week (automated)
-- Low frustration (Ralph debugs)
+- Low frustration (Rube Goldberg debugs)
 - Higher completion rate (iteration is automatic)
 
 **10x your invention output.** 🚀
@@ -244,10 +244,10 @@ Designr/
 ├── INVENTOR-QUICKSTART.md       ← You are here
 ├── inventions/
 │   ├── README.md                ← System overview
-│   ├── HOW-TO-INVENT-WITH-RALPH.md  ← Detailed guide
+│   ├── HOW-TO-INVENT-WITH-RUBE_GOLDBERG.md  ← Detailed guide
 │   ├── scripts/
 │   │   ├── new-invention.sh     ← Create new invention
-│   │   └── start-invention.sh   ← Start Ralph to build
+│   │   └── start-invention.sh   ← Start Rube Goldberg to build
 │   ├── templates/
 │   │   ├── invention-template.md       ← General template
 │   │   └── software-invention.md       ← Software-specific
@@ -266,19 +266,19 @@ Designr/
 
 ### Right Now (5 minutes)
 1. Read the example: `cat inventions/active/example-smart-clipboard.md`
-2. Build it with Ralph: `./inventions/scripts/start-invention.sh example-smart-clipboard`
-3. Watch Ralph work!
+2. Build it with Rube Goldberg: `./inventions/scripts/start-invention.sh example-smart-clipboard`
+3. Watch Rube Goldberg work!
 
 ### Today (30 minutes)
 1. Pick your simplest digital invention idea
 2. Create it: `./inventions/scripts/new-invention.sh my-idea`
 3. Fill out the specification
-4. Start Ralph and let it build
+4. Start Rube Goldberg and let it build
 5. Review the prototype
 
 ### This Week
 1. Document 3-5 of your best invention ideas
-2. Let Ralph build them all
+2. Let Rube Goldberg build them all
 3. Review the prototypes
 4. Ship the best ones!
 
@@ -286,27 +286,27 @@ Designr/
 
 ## Common Questions
 
-**Q: Can Ralph build hardware?**
+**Q: Can Rube Goldberg build hardware?**
 A: No physical hardware, but it CAN write software for hardware (Arduino code, Raspberry Pi scripts, etc.)
 
 **Q: What if my invention is complex?**
 A: Break it into phases in the build plan. Increase `estimated_iterations` to 25-30.
 
 **Q: Can I pause and resume?**
-A: Yes! Ralph's state is saved in `.claude/ralph-loop.local.md`. Just restart the session.
+A: Yes! Rube Goldberg's state is saved in `.claude/rube-goldberg-loop.local.md`. Just restart the session.
 
-**Q: What if Ralph gets stuck?**
-A: Ralph will document the blocker. You can then clarify that step in the spec and restart.
+**Q: What if Rube Goldberg gets stuck?**
+A: Rube Goldberg will document the blocker. You can then clarify that step in the spec and restart.
 
-**Q: Can I iterate on Ralph's output?**
-A: Absolutely! Once Ralph finishes, you can refine it manually or create a new Ralph loop for improvements.
+**Q: Can I iterate on Rube Goldberg's output?**
+A: Absolutely! Once Rube Goldberg finishes, you can refine it manually or create a new Rube Goldberg loop for improvements.
 
 ---
 
 ## Your Invention Pipeline
 
 ```
-[100+ Ideas] → [Document Top 5] → [Ralph Builds] → [Review] → [Ship Best Ones]
+[100+ Ideas] → [Document Top 5] → [Rube Goldberg Builds] → [Review] → [Ship Best Ones]
      ↓              ↓                  ↓              ↓            ↓
   ideas/        active/            (automatic)    evaluate    completed/
 ```
@@ -324,11 +324,11 @@ A: Absolutely! Once Ralph finishes, you can refine it manually or create a new R
 # Step 2: Edit the file
 vim inventions/active/my-first-invention.md
 
-# Step 3: Let Ralph build it
+# Step 3: Let Rube Goldberg build it
 ./inventions/scripts/start-invention.sh my-first-invention
 
 # Step 4: Review the prototype
-# (Ralph will notify when done)
+# (Rube Goldberg will notify when done)
 ```
 
 ---

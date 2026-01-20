@@ -2,9 +2,9 @@
 
 ## What You Have
 
-A complete automation system that executes complex setup instructions for you using Ralph Wiggum loops.
+A complete automation system that executes complex setup instructions for you using Rube Goldberg loops.
 
-**No more manual setup!** Just paste instructions and let Ralph handle everything.
+**No more manual setup!** Just paste instructions and let Rube Goldberg handle everything.
 
 ---
 
@@ -16,8 +16,8 @@ A complete automation system that executes complex setup instructions for you us
 1. Run: ./automation/quick-start.sh
 2. Name your setup (e.g., "docker")
 3. Edit the created file and paste Claude's instructions
-4. Run: ./automation/start-ralph.sh docker
-5. Done! Ralph executes everything automatically
+4. Run: ./automation/start-rube-goldberg.sh docker
+5. Done! Rube Goldberg executes everything automatically
 ```
 
 ---
@@ -30,14 +30,14 @@ Designr/
 │   ├── HOW-TO-USE.md           ← Detailed guide
 │   ├── README.md               ← System overview
 │   ├── quick-start.sh          ← Create new workflow
-│   ├── start-ralph.sh          ← Start automation
+│   ├── start-rube-goldberg.sh          ← Start automation
 │   ├── templates/              ← Templates for workflows
 │   │   └── setup-template.md
 │   ├── workflows/              ← Your setup workflows go here
 │   │   └── example-nodejs-setup.md
 │   └── scripts/                ← Helper scripts
 │       └── verify-installation.sh
-├── ralph-setup-template.md     ← Ralph loop template
+├── rube-goldberg-setup-template.md     ← Rube Goldberg loop template
 └── GETTING-STARTED.md          ← You are here
 ```
 
@@ -60,13 +60,13 @@ You manually execute 47 steps, debug errors, Google solutions, repeat...
 # 2. Paste Claude's instructions into the file
 vim automation/workflows/my-dev-env-setup.md
 
-# 3. Start Ralph
-./automation/start-ralph.sh my-dev-env
+# 3. Start Rube Goldberg
+./automation/start-rube-goldberg.sh my-dev-env
 
-# 4. Ralph executes everything automatically!
+# 4. Rube Goldberg executes everything automatically!
 ```
 
-Ralph:
+Rube Goldberg:
 - ✅ Reads all instructions
 - ✅ Executes each step
 - ✅ Verifies success
@@ -81,7 +81,7 @@ Check out `automation/workflows/example-nodejs-setup.md` for a complete Node.js 
 
 You can run it right now:
 ```bash
-./automation/start-ralph.sh example-nodejs
+./automation/start-rube-goldberg.sh example-nodejs
 ```
 
 (Only if you actually want Node.js installed!)
@@ -98,8 +98,8 @@ You can run it right now:
 **Creates** a new workflow file for you.
 **Use when**: Starting a new setup automation.
 
-### ▶️ start-ralph.sh
-**Starts** the Ralph loop to execute your workflow.
+### ▶️ start-rube-goldberg.sh
+**Starts** the Rube Goldberg loop to execute your workflow.
 **Use when**: Ready to run the automation.
 
 ### 📋 templates/setup-template.md
@@ -119,8 +119,8 @@ You: *Spends 2 hours manually executing, debugging*
 ### Your New Approach:
 ```
 Claude Desktop: "Here are 50 steps..."
-You: *Pastes into workflow file, starts Ralph, goes for coffee*
-Ralph: *Handles everything automatically*
+You: *Pastes into workflow file, starts Rube Goldberg, goes for coffee*
+Rube Goldberg: *Handles everything automatically*
 ```
 
 ---
@@ -138,8 +138,8 @@ Ralph: *Handles everything automatically*
 - Always set `max_iterations` (15-30 is good)
 - Add verification commands after each step
 - Use clear completion promises
-- Let Ralph debug errors for you
-- Monitor progress: `grep '^iteration:' .claude/ralph-loop.local.md`
+- Let Rube Goldberg debug errors for you
+- Monitor progress: `grep '^iteration:' .claude/rube-goldberg-loop.local.md`
 
 ---
 
@@ -147,7 +147,7 @@ Ralph: *Handles everything automatically*
 
 - **How does it work?** → Read `automation/README.md`
 - **How do I use it?** → Read `automation/HOW-TO-USE.md`
-- **What's Ralph?** → Read `ralph-setup-template.md`
+- **What's Rube Goldberg?** → Read `rube-goldberg-setup-template.md`
 - **Show me an example** → See `automation/workflows/example-nodejs-setup.md`
 
 ---
@@ -157,5 +157,5 @@ Ralph: *Handles everything automatically*
 Next time you get complex setup instructions, you know what to do:
 1. Create workflow
 2. Paste instructions
-3. Start Ralph
+3. Start Rube Goldberg
 4. Relax ☕

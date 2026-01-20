@@ -167,7 +167,7 @@ Then create a Pull Request on GitHub with:
 ## Testing Your Changes
 
 ### For Workflow Files:
-1. Test with Ralph using your workflow
+1. Test with Rube Goldberg using your workflow
 2. Verify all steps complete successfully
 3. Test error handling (intentionally break something)
 4. Document any platform-specific requirements

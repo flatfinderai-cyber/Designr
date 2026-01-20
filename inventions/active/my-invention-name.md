@@ -174,17 +174,17 @@ touch main.py
 ### Test Case 1: [Basic Functionality]
 - Input: [Sample input]
 - Expected Output: [What should happen]
-- Actual: [Ralph fills this during testing]
+- Actual: [Rube Goldberg fills this during testing]
 
 ### Test Case 2: [Edge Case]
 - Input: [Unusual input]
 - Expected Output: [How it should handle it]
-- Actual: [Ralph fills this during testing]
+- Actual: [Rube Goldberg fills this during testing]
 
 ### Test Case 3: [Error Handling]
 - Input: [Invalid input]
 - Expected Output: [Error message/handling]
-- Actual: [Ralph fills this during testing]
+- Actual: [Rube Goldberg fills this during testing]
 
 ---
 
@@ -210,9 +210,9 @@ The invention is complete when ALL of these are true:
 
 ---
 
-## Ralph Iteration Log
+## Rube Goldberg Iteration Log
 
-*Ralph will document attempts here:*
+*Rube Goldberg will document attempts here:*
 
 ### Iteration 1
 - Attempted:
@@ -234,7 +234,7 @@ The invention is complete when ALL of these are true:
 
 ## Next Steps After Completion
 
-Once Ralph finishes:
+Once Rube Goldberg finishes:
 1. Test the prototype yourself
 2. Identify improvements
 3. Decide: Ship it, iterate, or move to next invention?

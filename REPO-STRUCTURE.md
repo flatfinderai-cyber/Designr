@@ -27,7 +27,7 @@ This document explains the repository structure and how the app store is organiz
 │   └── workflows/                # Store-level CI/CD
 │
 ├── DesignrLabs/                 # ⚠️ DEPRECATED - See separate repo
-├── inventions/                  # Ralph Loop invention system
+├── inventions/                  # Rube Goldberg Loop invention system
 ├── automation/                  # Dev tool automation
 │
 └── submodules/ (future)

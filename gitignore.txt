@@ -10,7 +10,7 @@ build/
 *.js.map
 
 # Local configuration and state
-.claude/ralph-loop.local.md
+.claude/rube-goldberg-loop.local.md
 .claude/settings.local.json
 *.local.md
 *.local.json

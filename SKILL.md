@@ -1,11 +1,12 @@
 ---
-name: ralph-tui-prd
-description: "Generate a Product Requirements Document (PRD) for ralph-tui task orchestration. Creates PRDs with user stories that can be converted to beads issues or prd.json for automated execution. Triggers on: create a prd, write prd for, plan this feature, requirements for, spec out."
+name: rube-goldberg-tui-prd
+description: "Generate a Product Requirements Document (PRD) for rube-goldberg-tui task orchestration. Creates PRDs with user stories that can be converted to beads issues or prd.json for automated execution. Triggers on: create a prd, write prd for, plan this feature, requirements for, spec out."
 ---
+- name: Claude Code Action Official
+  uses: anthropics/claude-code-action@v1
+# Rube Goldberg TUI PRD Generator
 
-# Ralph TUI PRD Generator
-
-Create detailed Product Requirements Documents optimized for AI agent execution via ralph-tui.
+Create detailed Product Requirements Documents optimized for AI agent execution via rube-goldberg-tui.
 
 ---
 
@@ -102,7 +103,7 @@ For UI stories, also include:
 - Verify in browser using dev-browser skill
 ```
 
-This section is extracted by conversion tools (ralph-tui-create-json, ralph-tui-create-beads) and appended to each story's acceptance criteria.
+This section is extracted by conversion tools (rube-goldberg-tui-create-json, rube-goldberg-tui-create-beads) and appended to each story's acceptance criteria.
 
 ### 4. User Stories
 Each story needs:
@@ -155,7 +156,7 @@ Remaining questions or areas needing clarification.
 
 ## Writing for AI Agents
 
-The PRD will be executed by AI coding agents via ralph-tui. Therefore:
+The PRD will be executed by AI coding agents via rube-goldberg-tui. Therefore:
 
 - Be explicit and unambiguous
 - User stories should be small (completable in one session)
@@ -230,10 +231,10 @@ The PRD will be executed by AI coding agents via ralph-tui. Therefore:
 **Assistant:** Perfect, I have enough to generate the PRD.
 
 [PRD]
-# PRD: Dark Mode for Ralph TUI
+# PRD: Dark Mode for Rube Goldberg TUI
 
 ## Overview
-Add dark mode support to ralph-tui to reduce eye strain during long orchestration sessions. The feature will apply to all TUI components and persist the user's preference in the config file.
+Add dark mode support to rube-goldberg-tui to reduce eye strain during long orchestration sessions. The feature will apply to all TUI components and persist the user's preference in the config file.
 
 ## Goals
 - Provide a comfortable viewing experience in low-light environments
@@ -255,7 +256,7 @@ For UI stories, also include:
 **Description:** As a user, I want to set my preferred theme (light/dark) so that it persists across sessions.
 
 **Acceptance Criteria:**
-- [ ] Add `theme` field to `.ralph-tui.yaml` schema
+- [ ] Add `theme` field to `.rube-goldberg-tui.yaml` schema
 - [ ] Support values: "light", "dark", "system"
 - [ ] Default to "light" for backwards compatibility
 
@@ -286,7 +287,7 @@ For UI stories, also include:
 - [ ] Changes persist to config file
 
 ## Functional Requirements
-- FR-1: Theme setting must be readable from `.ralph-tui.yaml`
+- FR-1: Theme setting must be readable from `.rube-goldberg-tui.yaml`
 - FR-2: Theme must apply on TUI startup
 - FR-3: Theme changes in settings must apply immediately
 - FR-4: All text must maintain readability in both themes

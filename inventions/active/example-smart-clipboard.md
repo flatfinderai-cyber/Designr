@@ -300,28 +300,28 @@ touch clipboard.py
 - Expected Output:
   - List shows both items
   - Get 1 copies "Hello World" to clipboard
-- Actual: [Filled by Ralph]
+- Actual: [Filled by Rube Goldberg]
 
 ### Test Case 2: Search
 - Actions:
   1. Copy several items including "github.com/repo"
   2. Run `clipboard search "github"`
 - Expected Output: Only items containing "github" shown
-- Actual: [Filled by Ralph]
+- Actual: [Filled by Rube Goldberg]
 
 ### Test Case 3: Edge Case - Empty History
 - Actions:
   1. Delete history file
   2. Run `clipboard list`
 - Expected Output: "No clipboard history" or similar message
-- Actual: [Filled by Ralph]
+- Actual: [Filled by Rube Goldberg]
 
 ### Test Case 4: Large Items
 - Actions:
   1. Copy very long text (>1000 chars)
   2. Run `clipboard list`
 - Expected Output: Shows truncated preview
-- Actual: [Filled by Ralph]
+- Actual: [Filled by Rube Goldberg]
 
 ---
 
@@ -346,9 +346,9 @@ The invention is complete when ALL of these are true:
 
 ---
 
-## Ralph Iteration Log
+## Rube Goldberg Iteration Log
 
-*Ralph will document attempts here:*
+*Rube Goldberg will document attempts here:*
 
 ### Iteration 1
 - Attempted: Project setup

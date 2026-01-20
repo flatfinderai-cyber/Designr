@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Claude Code + Ralph Plugin - Complete Setup Script
+# Claude Code + Rube Goldberg Plugin - Complete Setup Script
 # Works on macOS and Linux
 #
 # Usage: ./setup-claude-code.sh
@@ -168,7 +168,7 @@ if [[ ! -d "$TEST_PROJECT" ]]; then
       "Read",
       "Write",
       "Edit",
-      "Skill(ralph-wiggum:*)"
+      "Skill(rube-goldberg-wiggum:*)"
     ]
   }
 }
@@ -250,10 +250,10 @@ cd /path/to/project
 claude
 ```
 
-## Ralph Loop Commands
-- `/ralph-loop "Your task" --max-iterations 10` - Start Ralph
-- `/cancel-ralph` - Cancel active Ralph loop
-- `/ralph-loop --help` - Ralph help
+## Rube Goldberg Loop Commands
+- `/rube-goldberg-loop "Your task" --max-iterations 10` - Start Rube Goldberg
+- `/cancel-rube-goldberg` - Cancel active Rube Goldberg loop
+- `/rube-goldberg-loop --help` - Rube Goldberg help
 
 ## Useful Commands
 - `claude auth status` - Check authentication
@@ -264,10 +264,10 @@ claude
 ## Config Locations
 - Global: `~/.claude/settings.json`
 - Project: `.claude/settings.local.json`
-- Ralph state: `.claude/ralph-loop.local.md`
+- Rube Goldberg state: `.claude/rube-goldberg-loop.local.md`
 
-## Ralph Loop Structure
-Create `.claude/ralph-loop.local.md`:
+## Rube Goldberg Loop Structure
+Create `.claude/rube-goldberg-loop.local.md`:
 ```markdown
 ---
 active: true
@@ -284,8 +284,8 @@ Your task description here
 - Always work in git repositories
 - Set max_iterations to prevent infinite loops
 - Use completion promises for auto-stop
-- Check `.claude/ralph-loop.local.md` for progress
-- Ralph is built into Claude Code (no separate install needed)
+- Check `.claude/rube-goldberg-loop.local.md` for progress
+- Rube Goldberg is built into Claude Code (no separate install needed)
 
 ## Common Project Setup
 ```bash
@@ -294,7 +294,7 @@ mkdir -p .claude
 cat > .claude/settings.local.json << 'JSON'
 {
   "permissions": {
-    "allow": ["Bash", "Read", "Write", "Edit", "Skill(ralph-wiggum:*)"]
+    "allow": ["Bash", "Read", "Write", "Edit", "Skill(rube-goldberg-wiggum:*)"]
   }
 }
 JSON
@@ -370,8 +370,8 @@ echo "2. Test it:"
 echo "   ${BLUE}cd ~/test-claude-project${NC}"
 echo "   ${BLUE}claude${NC}"
 echo ""
-echo "3. Try Ralph loop:"
-echo "   ${BLUE}/ralph-loop \"Add a hello function\" --max-iterations 5${NC}"
+echo "3. Try Rube Goldberg loop:"
+echo "   ${BLUE}/rube-goldberg-loop \"Add a hello function\" --max-iterations 5${NC}"
 echo ""
 echo "4. Read the quick reference:"
 echo "   ${BLUE}cat ~/claude-quick-ref.md${NC}"
@@ -386,5 +386,5 @@ if [[ $ERRORS -gt 0 ]]; then
   exit 1
 fi
 
-echo -e "${GREEN}Ready to build with Claude Code + Ralph! 🚀${NC}"
+echo -e "${GREEN}Ready to build with Claude Code + Rube Goldberg! 🚀${NC}"
 echo ""

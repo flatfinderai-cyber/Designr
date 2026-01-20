@@ -40,8 +40,8 @@ rsync -av --progress \
 
 # Copy essential root files if they exist
 echo "📄 Copying essential documentation..."
-if [ -f "$REPO_ROOT/ralph-setup-template.md" ]; then
-    cp "$REPO_ROOT/ralph-setup-template.md" "$OUTPUT_DIR/"
+if [ -f "$REPO_ROOT/rube-goldberg-setup-template.md" ]; then
+    cp "$REPO_ROOT/rube-goldberg-setup-template.md" "$OUTPUT_DIR/"
 fi
 
 if [ -f "$REPO_ROOT/.gitignore" ]; then
@@ -56,7 +56,7 @@ This is a standalone copy of the Designr Automation System.
 
 ## What This Is
 
-A system that uses Ralph Wiggum loops to automatically install and configure development tools based on written instructions.
+A system that uses Rube Goldberg loops to automatically install and configure development tools based on written instructions.
 
 ## Quick Start
 
@@ -67,8 +67,8 @@ A system that uses Ralph Wiggum loops to automatically install and configure dev
 # Edit the workflow file
 vim workflows/my-tool-name-setup.md
 
-# Start Ralph to execute it
-./start-ralph.sh my-tool-name
+# Start Rube Goldberg to execute it
+./start-rube-goldberg.sh my-tool-name
 ```
 
 ## Documentation
@@ -76,7 +76,7 @@ vim workflows/my-tool-name-setup.md
 - **README.md** - System overview
 - **HOW-TO-USE.md** - Detailed usage guide
 - **STANDALONE.md** - Standalone usage instructions
-- **AUTO-ACCEPT-SETUP.md** - Ralph configuration
+- **AUTO-ACCEPT-SETUP.md** - Rube Goldberg configuration
 
 ## Directory Structure
 
@@ -93,7 +93,7 @@ automation/
 - Git (optional)
 - Node.js 18+ (for Node.js automations)
 - Python 3.11+ (for Python automations)
-- Claude Code CLI or Claude Desktop (for Ralph loops)
+- Claude Code CLI or Claude Desktop (for Rube Goldberg loops)
 
 ## Source
 

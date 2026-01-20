@@ -2,7 +2,7 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/flatfinderai-cyber/Designr)
 
-**Build digital inventions 10x faster with Ralph Wiggum automation.**
+**Build digital inventions 10x faster with Rube Goldberg automation.**
 
 ---
 
@@ -12,7 +12,7 @@ A complete system for automating the development of:
 1. **Digital inventions** - Your novel software solutions
 2. **Dev tool setups** - Complex installation/configuration workflows
 
-Both use **Ralph Wiggum loops** to automatically build, test, debug, and iterate.
+Both use **Rube Goldberg loops** to automatically build, test, debug, and iterate.
 
 ---
 
@@ -43,7 +43,7 @@ cd Designr
 # Edit the spec file
 vim inventions/active/my-invention.md
 
-# Let Ralph build it
+# Let Rube Goldberg build it
 ./inventions/scripts/start-invention.sh my-invention
 ```
 
@@ -58,8 +58,8 @@ vim inventions/active/my-invention.md
 # Edit and add installation steps
 vim automation/workflows/tool-name-setup.md
 
-# Let Ralph execute it
-./automation/start-ralph.sh tool-name
+# Let Rube Goldberg execute it
+./automation/start-rube-goldberg.sh tool-name
 ```
 
 **Read:** [`automation/HOW-TO-USE.md`](automation/HOW-TO-USE.md)
@@ -73,14 +73,14 @@ Designr/
 ├── README.md                      ← Overview (you are here)
 ├── GETTING-STARTED.md             ← System overview
 ├── INVENTOR-QUICKSTART.md         ← For inventors (START HERE)
-├── ralph-setup-template.md        ← Ralph loop reference
+├── rube-goldberg-setup-template.md        ← Rube Goldberg loop reference
 │
 ├── inventions/                    ← Digital invention system
 │   ├── README.md                  ← Invention system docs
-│   ├── HOW-TO-INVENT-WITH-RALPH.md  ← Detailed inventor guide
+│   ├── HOW-TO-INVENT-WITH-RUBE_GOLDBERG.md  ← Detailed inventor guide
 │   ├── scripts/
 │   │   ├── new-invention.sh       ← Create invention spec
-│   │   └── start-invention.sh     ← Build with Ralph
+│   │   └── start-invention.sh     ← Build with Rube Goldberg
 │   ├── templates/
 │   │   ├── invention-template.md
 │   │   └── software-invention.md
@@ -93,7 +93,7 @@ Designr/
 │   ├── README.md
 │   ├── HOW-TO-USE.md             ← Setup automation guide
 │   ├── quick-start.sh
-│   ├── start-ralph.sh
+│   ├── start-rube-goldberg.sh
 │   ├── templates/
 │   ├── workflows/
 │   │   └── example-nodejs-setup.md
@@ -105,27 +105,27 @@ Designr/
 
 ---
 
-## Core Concept: Ralph Wiggum Loops
+## Core Concept: Rube Goldberg Loops
 
 **Traditional development:**
 ```
 You write code → Debug → Test → Fix → Repeat (hours)
 ```
 
-**With Ralph:**
+**With Rube Goldberg:**
 ```
-You specify what to build → Ralph builds/tests/fixes/iterates → You review (minutes)
+You specify what to build → Rube Goldberg builds/tests/fixes/iterates → You review (minutes)
 ```
 
 ### How It Works
 
 1. You create a specification file (problem, solution, build steps)
-2. Ralph reads it and starts building
-3. Ralph tests each step, sees failures, and debugs automatically
-4. Ralph iterates until everything works
-5. Ralph outputs completion when done
+2. Rube Goldberg reads it and starts building
+3. Rube Goldberg tests each step, sees failures, and debugs automatically
+4. Rube Goldberg iterates until everything works
+5. Rube Goldberg outputs completion when done
 
-**You focus on engineering. Ralph handles implementation.**
+**You focus on engineering. Rube Goldberg handles implementation.**
 
 ---
 
@@ -135,7 +135,7 @@ You specify what to build → Ralph builds/tests/fixes/iterates → You review (
 
 **Problem:** You have 100+ invention ideas but building them manually is slow.
 
-**Solution:** Document the invention, let Ralph build the prototype.
+**Solution:** Document the invention, let Rube Goldberg build the prototype.
 
 **Example:**
 - Smart clipboard history tool
@@ -149,7 +149,7 @@ You specify what to build → Ralph builds/tests/fixes/iterates → You review (
 
 **Problem:** Claude Desktop (or docs) gives you 50 setup steps to follow manually.
 
-**Solution:** Paste the steps into a workflow, let Ralph execute them.
+**Solution:** Paste the steps into a workflow, let Rube Goldberg execute them.
 
 **Example:**
 - Setting up Docker + Kubernetes
@@ -174,12 +174,12 @@ You specify what to build → Ralph builds/tests/fixes/iterates → You review (
 vim inventions/active/smart-clipboard.md
 ```
 
-**2. Start Ralph (1 min):**
+**2. Start Rube Goldberg (1 min):**
 ```bash
 ./inventions/scripts/start-invention.sh smart-clipboard
 ```
 
-**3. Ralph builds it (automatic):**
+**3. Rube Goldberg builds it (automatic):**
 ```
 Iteration 1: Setup Python project ✓
 Iteration 2: Install dependencies ✓
@@ -202,19 +202,19 @@ Iteration 9: Create README ✓
 ## Key Features
 
 ### ✅ Automated Building
-Ralph writes the code, creates files, installs dependencies
+Rube Goldberg writes the code, creates files, installs dependencies
 
 ### ✅ Intelligent Debugging
-Ralph sees errors and fixes them automatically
+Rube Goldberg sees errors and fixes them automatically
 
 ### ✅ Iterative Refinement
-Ralph tries different approaches until it works
+Rube Goldberg tries different approaches until it works
 
 ### ✅ Built-in Testing
-Ralph verifies each step before moving forward
+Rube Goldberg verifies each step before moving forward
 
 ### ✅ Documentation
-Ralph documents what it built and how
+Rube Goldberg documents what it built and how
 
 ### ✅ Parallel Development
 Build multiple inventions simultaneously
@@ -240,9 +240,9 @@ Build multiple inventions simultaneously
 
 - **[INVENTOR-QUICKSTART.md](INVENTOR-QUICKSTART.md)** - Start here for inventions
 - **[GETTING-STARTED.md](GETTING-STARTED.md)** - Overall system guide
-- **[inventions/HOW-TO-INVENT-WITH-RALPH.md](inventions/HOW-TO-INVENT-WITH-RALPH.md)** - Detailed invention guide
+- **[inventions/HOW-TO-INVENT-WITH-RUBE_GOLDBERG.md](inventions/HOW-TO-INVENT-WITH-RUBE_GOLDBERG.md)** - Detailed invention guide
 - **[automation/HOW-TO-USE.md](automation/HOW-TO-USE.md)** - Dev tool automation guide
-- **[ralph-setup-template.md](ralph-setup-template.md)** - Ralph loop reference
+- **[rube-goldberg-setup-template.md](rube-goldberg-setup-template.md)** - Rube Goldberg loop reference
 
 ---
 
@@ -254,14 +254,14 @@ Build multiple inventions simultaneously
 - Specify what needs to be built
 - Review and refine prototypes
 
-### Ralph's Role: The Builder
+### Rube Goldberg's Role: The Builder
 - Read specifications
 - Write implementation code
 - Test and verify functionality
 - Debug and fix issues
 - Iterate until it works
 
-**You think. Ralph builds.**
+**You think. Rube Goldberg builds.**
 
 ---
 
@@ -272,7 +272,7 @@ Build multiple inventions simultaneously
 1 inventor × 40 hours/week = 2-3 prototypes/week
 ```
 
-### With Ralph:
+### With Rube Goldberg:
 ```
 1 inventor × 40 hours/week = 10-20 prototypes/week
 ```
@@ -285,9 +285,9 @@ The bottleneck shifts from "building" to "choosing what to build."
 
 ## Technology
 
-- **Core:** Ralph Wiggum iterative AI loops
+- **Core:** Rube Goldberg iterative AI loops
 - **Languages:** TypeScript, Python (project setup)
-- **Plugins:** Ralph Wiggum, Serena (code intelligence)
+- **Plugins:** Rube Goldberg, Serena (code intelligence)
 - **Tools:** Bash automation scripts
 
 ---

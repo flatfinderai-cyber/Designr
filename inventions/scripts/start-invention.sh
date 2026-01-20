@@ -1,5 +1,5 @@
 #!/bin/bash
-# Start Ralph loop to build an invention
+# Start Rube Goldberg loop to build an invention
 
 set -e
 
@@ -34,7 +34,7 @@ PROMISE=$(grep "completion_promise:" "$INVENTION_FILE" | head -1 | cut -d'"' -f2
 MAX_ITER=$(grep "estimated_iterations:" "$INVENTION_FILE" | head -1 | awk '{print $2}' || echo "20")
 
 echo ""
-echo "🔬 Starting Ralph loop for invention: $INVENTION_NAME"
+echo "🔬 Starting Rube Goldberg loop for invention: $INVENTION_NAME"
 echo "   Specification: $INVENTION_FILE"
 echo "   Max iterations: $MAX_ITER"
 echo "   Completion promise: $PROMISE"
@@ -51,10 +51,10 @@ if [[ ! "$CONFIRM" =~ ^[Yy]$ ]]; then
     exit 0
 fi
 
-# Create Ralph loop state
+# Create Rube Goldberg loop state
 mkdir -p .claude
 
-cat > .claude/ralph-loop.local.md << EOF
+cat > .claude/rube-goldberg-loop.local.md << EOF
 ---
 active: true
 iteration: 1
@@ -86,7 +86,7 @@ IMPORTANT INSTRUCTIONS:
    - Verify error handling
 
 4. **Document as you go**
-   - Add notes to "Ralph Iteration Log" in the spec file
+   - Add notes to "Rube Goldberg Iteration Log" in the spec file
    - Document what worked and what failed
    - Explain fixes applied
 
@@ -109,9 +109,9 @@ BEGIN building the invention now.
 EOF
 
 echo ""
-echo "✅ Ralph loop activated!"
+echo "✅ Rube Goldberg loop activated!"
 echo ""
-echo "🤖 Ralph will now:"
+echo "🤖 Rube Goldberg will now:"
 echo "   1. Read your invention specification"
 echo "   2. Build it step-by-step"
 echo "   3. Test each component"
@@ -120,13 +120,13 @@ echo "   5. Iterate until it works"
 echo "   6. Document the process"
 echo ""
 echo "📊 Monitor progress:"
-echo "   grep '^iteration:' .claude/ralph-loop.local.md"
+echo "   grep '^iteration:' .claude/rube-goldberg-loop.local.md"
 echo ""
 echo "📝 View detailed logs:"
-echo "   tail -100 .claude/ralph-loop.local.md"
+echo "   tail -100 .claude/rube-goldberg-loop.local.md"
 echo ""
 echo "🛑 Cancel if needed:"
-echo "   /cancel-ralph (or rm .claude/ralph-loop.local.md)"
+echo "   /cancel-rube-goldberg (or rm .claude/rube-goldberg-loop.local.md)"
 echo ""
-echo "🚀 Ralph is starting! Check back periodically or let it run to completion."
+echo "🚀 Rube Goldberg is starting! Check back periodically or let it run to completion."
 echo ""

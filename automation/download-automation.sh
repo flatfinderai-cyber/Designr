@@ -46,7 +46,7 @@ echo "📂 Checking out automation directory..."
 git sparse-checkout set automation
 
 # Also get essential root files
-git sparse-checkout add ralph-setup-template.md
+git sparse-checkout add rube-goldberg-setup-template.md
 git sparse-checkout add README.md
 
 # Checkout the specified branch

@@ -346,7 +346,7 @@ After AI processes input (URL/image/video), user can:
 
 ***
 
-## **Ralph Loop Prompt for Designr Labs™**
+## **Rube Goldberg Loop Prompt for Designr Labs™**
 
 Save as `.claude/designr-labs-loop.local.md`:
 
@@ -429,9 +429,9 @@ This gives you the **Concepts-style color wheel**  and the **Perplexity-style mu
 
 [^13]: image.jpg
 
-[^14]: ralph-setup-template.md
+[^14]: rube-goldberg-setup-template.md
 
-[^15]: ralph-wiggum-as-a-software-engineer-2026-01-13.md
+[^15]: rube-goldberg-wiggum-as-a-software-engineer-2026-01-13.md
 
 [^16]: concepts.app_en_ios_manual_yourworkspace.jpg
 

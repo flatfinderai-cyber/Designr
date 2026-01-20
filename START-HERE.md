@@ -2,7 +2,7 @@
 
 ## What You Have
 
-**A complete automated invention & development system** that uses Ralph Wiggum loops to build digital inventions 10x faster.
+**A complete automated invention & development system** that uses Rube Goldberg loops to build digital inventions 10x faster.
 
 ---
 
@@ -17,7 +17,7 @@
 # Fill out the spec
 vim inventions/active/my-invention.md
 
-# Let Ralph build it
+# Let Rube Goldberg build it
 ./inventions/scripts/start-invention.sh my-invention
 
 # Review the prototype when done!
@@ -34,15 +34,15 @@ vim inventions/active/my-invention.md
 # Add installation steps
 vim automation/workflows/tool-name-setup.md
 
-# Let Ralph execute it
-./automation/start-ralph.sh tool-name
+# Let Rube Goldberg execute it
+./automation/start-rube-goldberg.sh tool-name
 
 # Tool installed automatically!
 ```
 
 **Read:** `automation/HOW-TO-USE.md`
 
-### Path 3: Set Up Claude Code + Ralph 🤖
+### Path 3: Set Up Claude Code + Rube Goldberg 🤖
 
 ```bash
 # Run the automated setup script
@@ -72,7 +72,7 @@ Designr/
 ├── inventions/                   ← Digital invention engine
 │   ├── scripts/
 │   │   ├── new-invention.sh     ← Create invention
-│   │   └── start-invention.sh   ← Build with Ralph
+│   │   └── start-invention.sh   ← Build with Rube Goldberg
 │   ├── active/                  ← Working on now
 │   │   └── example-smart-clipboard.md  ← Full example
 │   ├── ideas/                   ← Future ideas (100+)
@@ -100,7 +100,7 @@ Build the smart clipboard manager:
 ./inventions/scripts/start-invention.sh example-smart-clipboard
 ```
 
-Watch Ralph build a complete CLI tool automatically!
+Watch Rube Goldberg build a complete CLI tool automatically!
 
 ### 2. Build Your First Invention (30 minutes)
 
@@ -127,34 +127,34 @@ Next time you get complex installation instructions:
 vim automation/workflows/my-setup-setup.md
 
 # Run it
-./automation/start-ralph.sh my-setup
+./automation/start-rube-goldberg.sh my-setup
 ```
 
 ---
 
 ## Key Concepts
 
-### Ralph Wiggum Loops
+### Rube Goldberg Loops
 
 **Traditional:**
 ```
 You code → Debug → Test → Fix → Repeat (hours)
 ```
 
-**With Ralph:**
+**With Rube Goldberg:**
 ```
-You specify → Ralph builds/tests/fixes → Review (minutes)
+You specify → Rube Goldberg builds/tests/fixes → Review (minutes)
 ```
 
 ### How It Works
 
 1. Document what you want (problem, solution, steps)
-2. Ralph reads it
-3. Ralph builds, tests, debugs automatically
-4. Ralph iterates until it works
+2. Rube Goldberg reads it
+3. Rube Goldberg builds, tests, debugs automatically
+4. Rube Goldberg iterates until it works
 5. You review the prototype
 
-### Your Role vs Ralph's Role
+### Your Role vs Rube Goldberg's Role
 
 **You (The Inventor):**
 - Identify pain points
@@ -162,7 +162,7 @@ You specify → Ralph builds/tests/fixes → Review (minutes)
 - Write specifications
 - Review prototypes
 
-**Ralph (The Builder):**
+**Rube Goldberg (The Builder):**
 - Read specs
 - Write code
 - Test & verify
@@ -175,7 +175,7 @@ You specify → Ralph builds/tests/fixes → Review (minutes)
 
 ### For Inventors
 - `INVENTOR-QUICKSTART.md` - Your starting point
-- `inventions/HOW-TO-INVENT-WITH-RALPH.md` - Detailed guide
+- `inventions/HOW-TO-INVENT-WITH-RUBE_GOLDBERG.md` - Detailed guide
 - `inventions/active/example-smart-clipboard.md` - Complete example
 
 ### For Automation
@@ -186,7 +186,7 @@ You specify → Ralph builds/tests/fixes → Review (minutes)
 ### Configuration
 - `AUTO-ACCEPT-SETUP.md` - Auto-approve everything
 - `.claude/settings.local.json` - Project permissions
-- `ralph-setup-template.md` - Ralph loop reference
+- `rube-goldberg-setup-template.md` - Rube Goldberg loop reference
 
 ---
 
@@ -197,7 +197,7 @@ You specify → Ralph builds/tests/fixes → Review (minutes)
 Current settings:
 - ✅ Auto-accept mode: ON (`dontAsk`)
 - ✅ All essential tools allowed
-- ✅ Ralph plugin permissions granted
+- ✅ Rube Goldberg plugin permissions granted
 - ✅ All automation commands permitted
 
 If you need to change this, see `AUTO-ACCEPT-SETUP.md`
@@ -229,7 +229,7 @@ All build simultaneously!
 
 # Edit and run
 vim automation/workflows/complex-tool-setup.md
-./automation/start-ralph.sh complex-tool
+./automation/start-rube-goldberg.sh complex-tool
 
 # Come back to completed setup
 ```
@@ -283,7 +283,7 @@ completed/  → Ship or archive
 - Manual building & debugging
 - High frustration
 
-### With Ralph:
+### With Rube Goldberg:
 - 10-20 prototypes per week
 - Automated building & debugging
 - Focus on engineering
@@ -301,7 +301,7 @@ completed/  → Ship or archive
 
 ### This Week:
 1. Document 5 best invention ideas
-2. Let Ralph build them all
+2. Let Rube Goldberg build them all
 3. Review and iterate on winners
 
 ### This Month:
@@ -322,7 +322,7 @@ completed/  → Ship or archive
 ## The Philosophy
 
 **You focus on engineering the solutions.**
-**Ralph handles the implementation.**
+**Rube Goldberg handles the implementation.**
 
 The bottleneck shifts from "building" to "choosing what to build."
 

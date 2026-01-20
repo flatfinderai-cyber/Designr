@@ -4,7 +4,7 @@ This is an example workflow showing how to set up a complete Node.js development
 
 ---
 
-## SETUP INSTRUCTIONS FOR RALPH
+## SETUP INSTRUCTIONS FOR RUBE_GOLDBERG
 
 **OBJECTIVE**: Set up a complete Node.js development environment with all necessary tools.
 
@@ -101,11 +101,11 @@ When ALL criteria are met, output:
 
 ## How to Run This Setup
 
-Use Ralph to execute this:
+Use Rube Goldberg to execute this:
 
 ```bash
-# Create the Ralph loop state
-cat > .claude/ralph-loop.local.md << 'EOF'
+# Create the Rube Goldberg loop state
+cat > .claude/rube-goldberg-loop.local.md << 'EOF'
 ---
 active: true
 iteration: 1
@@ -118,7 +118,7 @@ Execute the setup instructions in automation/workflows/example-nodejs-setup.md
 EOF
 ```
 
-Then Ralph will:
+Then Rube Goldberg will:
 1. Read the instructions
 2. Execute each step
 3. Verify success

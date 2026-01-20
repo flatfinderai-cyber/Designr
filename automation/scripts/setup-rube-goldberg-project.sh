@@ -1,10 +1,10 @@
 #!/bin/bash
-# Setup a new project with AGENTS.md and Ralph infrastructure
-# Usage: ./setup-ralph-project.sh <project-name> <language> [project-type]
+# Setup a new project with AGENTS.md and Rube Goldberg infrastructure
+# Usage: ./setup-rube-goldberg-project.sh <project-name> <language> [project-type]
 
 set -e
 
-echo "🤖 Ralph Project Setup Wizard"
+echo "🤖 Rube Goldberg Project Setup Wizard"
 echo ""
 
 # Get project details
@@ -25,7 +25,7 @@ if [ -z "$PROJECT_NAME" ] || [ -z "$LANGUAGE" ]; then
     exit 1
 fi
 
-PROJECT_DIR="$HOME/ralph-projects/$PROJECT_NAME"
+PROJECT_DIR="$HOME/rube-goldberg-projects/$PROJECT_NAME"
 
 echo "Project: $PROJECT_NAME"
 echo "Language: $LANGUAGE"
@@ -222,24 +222,24 @@ cat > "$PROJECT_DIR/fix_plan.md" << 'FIXPLAN'
 - [ ] Set up testing framework
 
 ### Medium Priority
-- [ ] [Will be filled by Ralph]
+- [ ] [Will be filled by Rube Goldberg]
 
 ### Low Priority
-- [ ] [Will be filled by Ralph]
+- [ ] [Will be filled by Rube Goldberg]
 
 ## Completed
 - [x] Project initialized
 
 ## Notes
-- This file is managed by Ralph
+- This file is managed by Rube Goldberg
 - Items are sorted by priority
 - Completed items moved to bottom section
 FIXPLAN
 
-# Create Ralph loop configuration
-echo "🔄 Creating Ralph loop configuration..."
+# Create Rube Goldberg loop configuration
+echo "🔄 Creating Rube Goldberg loop configuration..."
 TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-cat > "$PROJECT_DIR/.claude/ralph-loop.local.md" << RALPHLOOP
+cat > "$PROJECT_DIR/.claude/rube-goldberg-loop.local.md" << RUBE_GOLDBERGLOOP
 ---
 active: true
 iteration: 1
@@ -248,7 +248,7 @@ completion_promise: "PROJECT COMPLETE"
 started_at: "$TIMESTAMP"
 ---
 
-## Ralph Loop Task
+## Rube Goldberg Loop Task
 
 0a. Study @specs/* to learn about the project specifications
 0b. Study @AGENTS.md to learn how to build and test the project
@@ -279,7 +279,7 @@ started_at: "$TIMESTAMP"
 9999999999. When @fix_plan.md becomes large periodically clean out completed items using a subagent.
 
 99999999999. Output <promise>PROJECT COMPLETE</promise> when all specs implemented, all tests pass, and project is fully functional.
-RALPHLOOP
+RUBE_GOLDBERGLOOP
 
 # Create permissions configuration
 echo "🔐 Creating permissions configuration..."
@@ -381,7 +381,7 @@ See AGENTS.md for complete setup instructions.
 
 ## Development
 
-Built with Ralph Wiggum automation system.
+Built with Rube Goldberg automation system.
 
 See \`specs/PROJECT_SPEC.md\` for detailed specifications.
 
@@ -400,11 +400,11 @@ Language: $LANGUAGE
 Setup includes:
 - AGENTS.md for AI agent instructions
 - specs/ directory with project specifications
-- fix_plan.md for Ralph TODO tracking
-- .claude/ralph-loop.local.md for Ralph automation
+- fix_plan.md for Rube Goldberg TODO tracking
+- .claude/rube-goldberg-loop.local.md for Rube Goldberg automation
 - Auto-accept permissions configured
 
-Ready for zero-intervention development with Ralph.
+Ready for zero-intervention development with Rube Goldberg.
 
 Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>"
 
@@ -421,14 +421,14 @@ echo ""
 echo "2. Update AGENTS.md with your build/test commands:"
 echo "   vim $PROJECT_DIR/AGENTS.md"
 echo ""
-echo "3. Start Ralph to build the project:"
+echo "3. Start Rube Goldberg to build the project:"
 echo "   cd $PROJECT_DIR"
 echo "   claude-code"
 echo ""
 echo "4. Monitor progress:"
-echo "   grep '^iteration:' .claude/ralph-loop.local.md"
-echo "   tail -f .claude/ralph-loop.local.md"
+echo "   grep '^iteration:' .claude/rube-goldberg-loop.local.md"
+echo "   tail -f .claude/rube-goldberg-loop.local.md"
 echo "   git log --oneline"
 echo ""
-echo "📚 Full guide: $HOME/cloud-projects/Designr/RALPH-AGENTS-SETUP-GUIDE.md"
+echo "📚 Full guide: $HOME/cloud-projects/Designr/RUBE_GOLDBERG-AGENTS-SETUP-GUIDE.md"
 echo ""

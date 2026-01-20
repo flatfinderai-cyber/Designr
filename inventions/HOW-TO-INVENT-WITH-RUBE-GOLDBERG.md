@@ -1,4 +1,4 @@
-# How to Build Your Inventions with Ralph
+# How to Build Your Inventions with Rube Goldberg
 
 ## For Inventors: Turn Ideas Into Reality Faster
 
@@ -14,9 +14,9 @@ You're an inventor with 100+ ideas. For each one:
 
 ---
 
-## The Solution: Ralph Does the Iteration For You
+## The Solution: Rube Goldberg Does the Iteration For You
 
-### What Ralph Does
+### What Rube Goldberg Does
 
 1. **Reads** your invention specification
 2. **Builds** the prototype step-by-step
@@ -30,7 +30,7 @@ You're an inventor with 100+ ideas. For each one:
 ```
 Old Way: Idea → Manual build → Debug → Test → Fix → Repeat (2-10 hours)
 
-New Way: Idea → Document spec → Start Ralph → Get coffee → Review prototype (30 mins)
+New Way: Idea → Document spec → Start Rube Goldberg → Get coffee → Review prototype (30 mins)
 ```
 
 ---
@@ -79,13 +79,13 @@ Step 1: Create file processor
 - Expected: No errors, data loaded correctly
 ```
 
-### Step 4: Start Ralph
+### Step 4: Start Rube Goldberg
 
 ```bash
 ./inventions/scripts/start-invention.sh my-invention-name
 ```
 
-Ralph will:
+Rube Goldberg will:
 1. Read your spec
 2. Start building
 3. Test each step
@@ -95,16 +95,16 @@ Ralph will:
 ### Step 5: Monitor Progress
 
 ```bash
-# Check which iteration Ralph is on
-grep '^iteration:' .claude/ralph-loop.local.md
+# Check which iteration Rube Goldberg is on
+grep '^iteration:' .claude/rube-goldberg-loop.local.md
 
-# See what Ralph is working on
-tail -50 .claude/ralph-loop.local.md
+# See what Rube Goldberg is working on
+tail -50 .claude/rube-goldberg-loop.local.md
 ```
 
 ### Step 6: Review the Prototype
 
-When Ralph outputs `<promise>INVENTION COMPLETE</promise>`:
+When Rube Goldberg outputs `<promise>INVENTION COMPLETE</promise>`:
 - Check the code/implementation
 - Test it yourself
 - Iterate further if needed
@@ -140,13 +140,13 @@ language: "python"
 
 **Success:** `python invoice-gen.py data.csv` creates invoice.pdf
 
-### Start Ralph (1 minute)
+### Start Rube Goldberg (1 minute)
 
 ```bash
 ./inventions/scripts/start-invention.sh invoice-generator
 ```
 
-### Ralph Works (15-30 iterations)
+### Rube Goldberg Works (15-30 iterations)
 
 ```
 Iteration 1: Create project structure ✓
@@ -173,7 +173,7 @@ Working prototype ready to use! ✅
 
 ### ✅ DO:
 
-1. **Start with software inventions** - Ralph excels at code
+1. **Start with software inventions** - Rube Goldberg excels at code
 2. **Be specific** in your build steps
 3. **Add verification** after each step
 4. **Set realistic max_iterations** (15-30 for complex inventions)
@@ -183,16 +183,16 @@ Working prototype ready to use! ✅
 ### ❌ DON'T:
 
 1. **Be vague** - "build the thing" won't work
-2. **Skip verification steps** - Ralph needs to know what success looks like
+2. **Skip verification steps** - Rube Goldberg needs to know what success looks like
 3. **Set iterations too low** - Complex inventions need time
-4. **Forget the completion promise** - Ralph will loop forever
-5. **Try to build hardware** - Ralph can write code, not physically build things
+4. **Forget the completion promise** - Rube Goldberg will loop forever
+5. **Try to build hardware** - Rube Goldberg can write code, not physically build things
 
 ---
 
 ## What Types of Inventions Work Best?
 
-### ✅ Great for Ralph:
+### ✅ Great for Rube Goldberg:
 
 - **Software tools** (CLI apps, scripts)
 - **Web applications** (frontend + backend)
@@ -202,7 +202,7 @@ Working prototype ready to use! ✅
 - **Browser extensions**
 - **Mobile apps** (code only, not design)
 
-### 🔧 Hybrid (Ralph handles software part):
+### 🔧 Hybrid (Rube Goldberg handles software part):
 
 - **Arduino/Raspberry Pi code**
 - **IoT device programming**
@@ -212,9 +212,9 @@ Working prototype ready to use! ✅
 
 ### ❌ Not suitable:
 
-- **Pure hardware** (Ralph can't 3D print or solder)
+- **Pure hardware** (Rube Goldberg can't 3D print or solder)
 - **Physical prototypes** (can't manipulate real objects)
-- **Designs requiring human creativity** (Ralph follows instructions)
+- **Designs requiring human creativity** (Rube Goldberg follows instructions)
 
 ---
 
@@ -234,13 +234,13 @@ inventions/
 
 1. **Capture ideas** quickly in `ideas/`
 2. **Prioritize** - move best ideas to `active/`
-3. **Use Ralph** to build 3-5 simultaneously
+3. **Use Rube Goldberg** to build 3-5 simultaneously
 4. **Review** completed prototypes
 5. **Iterate** on the most promising ones
 
 ### Build Multiple Inventions in Parallel
 
-Ralph can handle multiple projects:
+Rube Goldberg can handle multiple projects:
 
 ```bash
 # Start 3 inventions at once
@@ -273,14 +273,14 @@ cp inventions/templates/my-template.md \
 
 ## Measuring Success
 
-### Before Ralph:
+### Before Rube Goldberg:
 - **1-2 inventions per week** (manually built)
 - **High frustration** from debugging
 - **Many abandoned** due to complexity
 
-### With Ralph:
+### With Rube Goldberg:
 - **5-10 prototypes per week** (automated)
-- **Low frustration** (Ralph handles debugging)
+- **Low frustration** (Rube Goldberg handles debugging)
 - **Higher completion rate** (iteration is automated)
 
 ---
@@ -289,7 +289,7 @@ cp inventions/templates/my-template.md \
 
 1. **Pick your simplest software invention**
 2. **Document it** using the template
-3. **Start Ralph** and see it work
+3. **Start Rube Goldberg** and see it work
 4. **Scale up** to more complex inventions
 
 **You're about to 10x your invention output.** 🚀
@@ -298,10 +298,10 @@ cp inventions/templates/my-template.md \
 
 ## Questions?
 
-- **Can Ralph build hardware?** No, but it can write the control software
+- **Can Rube Goldberg build hardware?** No, but it can write the control software
 - **What if my invention is complex?** Break it into phases, increase max_iterations
-- **Can I pause and resume?** Yes! Ralph state is saved in files
-- **What if Ralph gets stuck?** Increase iterations or clarify the stuck step
+- **Can I pause and resume?** Yes! Rube Goldberg state is saved in files
+- **What if Rube Goldberg gets stuck?** Increase iterations or clarify the stuck step
 
 ---
 

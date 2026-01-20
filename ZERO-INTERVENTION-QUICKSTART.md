@@ -4,8 +4,8 @@
 
 A complete system for building applications with **ZERO human intervention** using:
 1. **AGENTS.md** - Instructions for AI agents on how to work with your project
-2. **Ralph Wiggum** - Iterative AI loop that builds, tests, and fixes automatically
-3. **Automated setup scripts** - One command to create new Ralph-powered projects
+2. **Rube Goldberg** - Iterative AI loop that builds, tests, and fixes automatically
+3. **Automated setup scripts** - One command to create new Rube Goldberg-powered projects
 
 ---
 
@@ -13,23 +13,23 @@ A complete system for building applications with **ZERO human intervention** usi
 
 ### Option 1: Use the Automated Setup Script (Fastest)
 
-Create a new Ralph-powered project in one command:
+Create a new Rube Goldberg-powered project in one command:
 
 ```bash
 # Syntax
-./automation/scripts/setup-ralph-project.sh <name> <language> [type]
+./automation/scripts/setup-rube-goldberg-project.sh <name> <language> [type]
 
 # Examples
-./automation/scripts/setup-ralph-project.sh task-manager python cli-tool
-./automation/scripts/setup-ralph-project.sh my-api typescript api
-./automation/scripts/setup-ralph-project.sh blog-app javascript web-app
+./automation/scripts/setup-rube-goldberg-project.sh task-manager python cli-tool
+./automation/scripts/setup-rube-goldberg-project.sh my-api typescript api
+./automation/scripts/setup-rube-goldberg-project.sh blog-app javascript web-app
 ```
 
 This creates a complete project with:
 - ✅ AGENTS.md configured for your language
 - ✅ specs/ directory with template
-- ✅ fix_plan.md for Ralph's TODO tracking
-- ✅ .claude/ralph-loop.local.md ready to run
+- ✅ fix_plan.md for Rube Goldberg's TODO tracking
+- ✅ .claude/rube-goldberg-loop.local.md ready to run
 - ✅ Auto-accept permissions enabled
 - ✅ Git repository initialized
 - ✅ Language-specific .gitignore
@@ -37,7 +37,7 @@ This creates a complete project with:
 **Then:**
 1. Edit `specs/PROJECT_SPEC.md` with your requirements (be specific!)
 2. Update `AGENTS.md` with exact build/test commands
-3. Run `claude-code` to start Ralph
+3. Run `claude-code` to start Rube Goldberg
 4. Watch it build automatically
 
 ---
@@ -53,18 +53,18 @@ Use the Designr invention workflow:
 # Edit the specification (BE SPECIFIC!)
 vim inventions/active/my-app.md
 
-# Start Ralph
+# Start Rube Goldberg
 ./inventions/scripts/start-invention.sh my-app
 
 # Monitor progress
-tail -f .claude/ralph-loop.local.md
+tail -f .claude/rube-goldberg-loop.local.md
 ```
 
 ---
 
 ### Option 3: Manual Setup (Learn the System)
 
-Follow the complete guide: `RALPH-AGENTS-SETUP-GUIDE.md`
+Follow the complete guide: `RUBE_GOLDBERG-AGENTS-SETUP-GUIDE.md`
 
 This teaches you every component and how they work together.
 
@@ -78,10 +78,10 @@ This teaches you every component and how they work together.
 
 ```bash
 # 1. Create project
-./automation/scripts/setup-ralph-project.sh task-manager python cli-tool
+./automation/scripts/setup-rube-goldberg-project.sh task-manager python cli-tool
 
 # 2. Navigate to project
-cd ~/ralph-projects/task-manager
+cd ~/rube-goldberg-projects/task-manager
 
 # 3. Edit the spec (THIS IS CRITICAL - BE SPECIFIC!)
 vim specs/PROJECT_SPEC.md
@@ -300,13 +300,13 @@ mypy src/
 ```
 ```
 
-**5. Start Ralph:**
+**5. Start Rube Goldberg:**
 
 ```bash
 # Make sure you're in the project directory
-cd ~/ralph-projects/task-manager
+cd ~/rube-goldberg-projects/task-manager
 
-# Start Claude Code - Ralph will read .claude/ralph-loop.local.md automatically
+# Start Claude Code - Rube Goldberg will read .claude/rube-goldberg-loop.local.md automatically
 claude-code
 ```
 
@@ -316,25 +316,25 @@ Open another terminal and watch:
 
 ```bash
 # Watch iteration count
-watch -n 5 'grep "^iteration:" ~/ralph-projects/task-manager/.claude/ralph-loop.local.md'
+watch -n 5 'grep "^iteration:" ~/rube-goldberg-projects/task-manager/.claude/rube-goldberg-loop.local.md'
 
 # Watch git commits
-watch -n 10 'cd ~/ralph-projects/task-manager && git log --oneline -10'
+watch -n 10 'cd ~/rube-goldberg-projects/task-manager && git log --oneline -10'
 
-# See what Ralph is working on
-tail -f ~/ralph-projects/task-manager/.claude/ralph-loop.local.md
+# See what Rube Goldberg is working on
+tail -f ~/rube-goldberg-projects/task-manager/.claude/rube-goldberg-loop.local.md
 ```
 
 **7. When Complete:**
 
-Ralph will output: `<promise>TASK MANAGER COMPLETE</promise>`
+Rube Goldberg will output: `<promise>TASK MANAGER COMPLETE</promise>`
 
 Then test it yourself:
 
 ```bash
-cd ~/ralph-projects/task-manager
+cd ~/rube-goldberg-projects/task-manager
 source venv/bin/activate
-task add "Test Ralph's work"
+task add "Test Rube Goldberg's work"
 task list
 task complete 1
 task list
@@ -367,7 +367,7 @@ task list
 
 ### 2. Build/Test Commands Must Be Exact
 
-Ralph will run these commands literally. They must work.
+Rube Goldberg will run these commands literally. They must work.
 
 ❌ **Bad:**
 ```markdown
@@ -396,7 +396,7 @@ pytest --cov=src --cov-report=term-missing
 
 ### 4. Define Clear Success Criteria
 
-Ralph needs to know when to stop. Be explicit:
+Rube Goldberg needs to know when to stop. Be explicit:
 
 ```markdown
 ## Success Criteria
@@ -409,14 +409,14 @@ Ralph needs to know when to stop. Be explicit:
 
 ---
 
-## Monitoring Ralph
+## Monitoring Rube Goldberg
 
 ### Watch Iteration Count
 ```bash
-watch -n 5 'grep "^iteration:" .claude/ralph-loop.local.md'
+watch -n 5 'grep "^iteration:" .claude/rube-goldberg-loop.local.md'
 ```
 
-### Watch Git Commits (Ralph commits after each success)
+### Watch Git Commits (Rube Goldberg commits after each success)
 ```bash
 watch -n 10 'git log --oneline -10'
 ```
@@ -428,19 +428,19 @@ watch -n 10 'cat fix_plan.md'
 
 ### See Current Work
 ```bash
-tail -50 .claude/ralph-loop.local.md
+tail -50 .claude/rube-goldberg-loop.local.md
 ```
 
 ---
 
 ## Troubleshooting
 
-### Ralph Stuck on Same Error (>5 iterations)
+### Rube Goldberg Stuck on Same Error (>5 iterations)
 
-**Fix:** Add specific instruction to .claude/ralph-loop.local.md
+**Fix:** Add specific instruction to .claude/rube-goldberg-loop.local.md
 
 ```bash
-vim .claude/ralph-loop.local.md
+vim .claude/rube-goldberg-loop.local.md
 ```
 
 Add after existing numbered items:
@@ -449,13 +449,13 @@ Add after existing numbered items:
 99999999999999. IMPORTANT: [Your specific instruction to fix the issue]
 ```
 
-For example, if Ralph keeps forgetting to install a dependency:
+For example, if Rube Goldberg keeps forgetting to install a dependency:
 
 ```markdown
 99999999999999. CRITICAL: Before running tests, ALWAYS run `pip install -r requirements.txt` first
 ```
 
-### Ralph Makes Placeholder Implementations
+### Rube Goldberg Makes Placeholder Implementations
 
 **Symptom:** Code has `# TODO: implement` or minimal functions
 
@@ -465,7 +465,7 @@ For example, if Ralph keeps forgetting to install a dependency:
 9999999999999999999. DO NOT IMPLEMENT PLACEHOLDER OR SIMPLE IMPLEMENTATIONS. WE WANT FULL IMPLEMENTATIONS. DO IT OR I WILL YELL AT YOU. NO PLACEHOLDERS. NO TODOS. FULL COMPLETE IMPLEMENTATIONS ONLY.
 ```
 
-### Ralph Can't Find Existing Code
+### Rube Goldberg Can't Find Existing Code
 
 **Symptom:** Re-implementing things
 
@@ -475,7 +475,7 @@ For example, if Ralph keeps forgetting to install a dependency:
 999999999999999. CRITICAL: Before implementing ANYTHING, use subagents to search the entire codebase thoroughly. DO NOT ASSUME CODE DOESN'T EXIST. SEARCH FIRST. ALWAYS.
 ```
 
-### Context Window Full (Ralph makes unrelated changes)
+### Context Window Full (Rube Goldberg makes unrelated changes)
 
 **Fix:** Increase subagent usage:
 
@@ -497,7 +497,7 @@ git reset --hard <good-commit-hash>
 # Fix the spec or AGENTS.md
 vim specs/PROJECT_SPEC.md
 
-# Restart Ralph
+# Restart Rube Goldberg
 claude-code
 ```
 
@@ -508,7 +508,7 @@ claude-code
 After completing this quickstart, you have:
 
 1. ✅ **AGENTS.md** - A standardized way for AI agents to understand your project
-2. ✅ **Ralph infrastructure** - Complete automation system
+2. ✅ **Rube Goldberg infrastructure** - Complete automation system
 3. ✅ **Setup script** - One-command project creation
 4. ✅ **Working example** - Task Manager CLI built with zero intervention
 5. ✅ **Complete documentation** - Full guides for future projects
@@ -521,16 +521,16 @@ After completing this quickstart, you have:
 
 ```bash
 # Todo app with web interface
-./automation/scripts/setup-ralph-project.sh todo-web javascript web-app
+./automation/scripts/setup-rube-goldberg-project.sh todo-web javascript web-app
 
 # REST API for blog
-./automation/scripts/setup-ralph-project.sh blog-api typescript api
+./automation/scripts/setup-rube-goldberg-project.sh blog-api typescript api
 
 # Data processing tool
-./automation/scripts/setup-ralph-project.sh data-processor python cli-tool
+./automation/scripts/setup-rube-goldberg-project.sh data-processor python cli-tool
 
 # URL shortener service
-./automation/scripts/setup-ralph-project.sh url-shortener go api
+./automation/scripts/setup-rube-goldberg-project.sh url-shortener go api
 ```
 
 ### Integrate with Existing Designr System
@@ -543,7 +543,7 @@ Your existing invention system now has AGENTS.md support:
 
 # Add AGENTS.md to that invention
 # Edit spec with specific requirements
-# Start Ralph
+# Start Rube Goldberg
 ./inventions/scripts/start-invention.sh smart-email-filter
 ```
 
@@ -557,10 +557,10 @@ Your existing invention system now has AGENTS.md support:
 
 ## Resources
 
-- **Complete Setup Guide:** `RALPH-AGENTS-SETUP-GUIDE.md` (comprehensive, read for deep understanding)
+- **Complete Setup Guide:** `RUBE_GOLDBERG-AGENTS-SETUP-GUIDE.md` (comprehensive, read for deep understanding)
 - **This File:** `ZERO-INTERVENTION-QUICKSTART.md` (quick reference)
 - **AGENTS.md Standard:** `agentsmd-2026-01-13.md` (format specification)
-- **Ralph Deep Dive:** `ralph-wiggum-as-a-software-engineer-2026-01-13.md` (theory and advanced techniques)
+- **Rube Goldberg Deep Dive:** `rube-goldberg-wiggum-as-a-software-engineer-2026-01-13.md` (theory and advanced techniques)
 - **Existing Invention System:** `INVENTOR-QUICKSTART.md` (original Designr workflow)
 
 ---
@@ -569,10 +569,10 @@ Your existing invention system now has AGENTS.md support:
 
 **Old way:** 3-5 hours to build a prototype, manually coding and debugging
 
-**New way:** 30 minutes to write specs, Ralph builds it in 20-30 iterations (1-2 hours of computer time, 0 minutes of your time)
+**New way:** 30 minutes to write specs, Rube Goldberg builds it in 20-30 iterations (1-2 hours of computer time, 0 minutes of your time)
 
 **Result:** 10x productivity increase
 
-**You write specifications. Ralph writes code.**
+**You write specifications. Rube Goldberg writes code.**
 
 Go build. 🚀

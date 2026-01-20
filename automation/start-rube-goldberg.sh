@@ -1,5 +1,5 @@
 #!/bin/bash
-# Start a Ralph loop for automated setup
+# Start a Rube Goldberg loop for automated setup
 
 set -e
 
@@ -8,9 +8,9 @@ WORKFLOW_NAME="${1:-}"
 if [ -z "$WORKFLOW_NAME" ]; then
     echo "❌ Error: No workflow name provided"
     echo ""
-    echo "Usage: ./automation/start-ralph.sh <workflow-name>"
+    echo "Usage: ./automation/start-rube-goldberg.sh <workflow-name>"
     echo ""
-    echo "Example: ./automation/start-ralph.sh nodejs"
+    echo "Example: ./automation/start-rube-goldberg.sh nodejs"
     echo ""
     echo "Available workflows:"
     ls automation/workflows/*.md 2>/dev/null | sed 's/.*\//  - /' || echo "  (none yet)"
@@ -38,16 +38,16 @@ read -p "Max iterations (default: 20): " MAX_ITER
 MAX_ITER="${MAX_ITER:-20}"
 
 echo ""
-echo "🔄 Starting Ralph loop for: $WORKFLOW_NAME"
+echo "🔄 Starting Rube Goldberg loop for: $WORKFLOW_NAME"
 echo "   Workflow: $WORKFLOW_FILE"
 echo "   Max iterations: $MAX_ITER"
 echo "   Completion promise: $PROMISE"
 echo ""
 
-# Create Ralph loop state
+# Create Rube Goldberg loop state
 mkdir -p .claude
 
-cat > .claude/ralph-loop.local.md << EOF
+cat > .claude/rube-goldberg-loop.local.md << EOF
 ---
 active: true
 iteration: 1
@@ -72,9 +72,9 @@ When ALL steps are complete and all success criteria are met, output:
 IMPORTANT: Only output the promise when EVERYTHING is truly complete and verified.
 EOF
 
-echo "✅ Ralph loop state created: .claude/ralph-loop.local.md"
+echo "✅ Rube Goldberg loop state created: .claude/rube-goldberg-loop.local.md"
 echo ""
-echo "📖 Ralph will now:"
+echo "📖 Rube Goldberg will now:"
 echo "   1. Read your setup instructions"
 echo "   2. Execute each step"
 echo "   3. Verify success"
@@ -82,6 +82,6 @@ echo "   4. Fix any failures"
 echo "   5. Iterate until complete"
 echo ""
 echo "🎯 Monitor progress:"
-echo "   grep '^iteration:' .claude/ralph-loop.local.md"
+echo "   grep '^iteration:' .claude/rube-goldberg-loop.local.md"
 echo ""
-echo "🚀 Ready! Start your chat and Ralph will begin automatically."
+echo "🚀 Ready! Start your chat and Rube Goldberg will begin automatically."

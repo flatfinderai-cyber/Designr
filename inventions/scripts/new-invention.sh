@@ -168,17 +168,17 @@ cd ${INVENTION_NAME}
 ### Test Case 1: [Basic Functionality]
 - Input: [Sample input]
 - Expected Output: [What should happen]
-- Actual: [Filled by Ralph during testing]
+- Actual: [Filled by Rube Goldberg during testing]
 
 ### Test Case 2: [Edge Case]
 - Input: [Unusual input]
 - Expected Output: [How it should handle it]
-- Actual: [Filled by Ralph during testing]
+- Actual: [Filled by Rube Goldberg during testing]
 
 ### Test Case 3: [Error Handling]
 - Input: [Invalid input]
 - Expected Output: [Error message/handling]
-- Actual: [Filled by Ralph during testing]
+- Actual: [Filled by Rube Goldberg during testing]
 
 ---
 
@@ -203,9 +203,9 @@ The invention is complete when ALL of these are true:
 
 ---
 
-## Ralph Iteration Log
+## Rube Goldberg Iteration Log
 
-*Ralph will document attempts here:*
+*Rube Goldberg will document attempts here:*
 
 ### Iteration 1
 - Attempted:
@@ -227,7 +227,7 @@ The invention is complete when ALL of these are true:
 
 ## Next Steps After Completion
 
-Once Ralph finishes:
+Once Rube Goldberg finishes:
 1. Test the prototype yourself
 2. Identify improvements
 3. Consider: Is this viable for users?
@@ -242,4 +242,4 @@ echo "   2. Be specific about the problem and solution"
 echo "   3. Detail the build steps clearly"
 echo "   4. When ready: ./inventions/scripts/start-invention.sh ${INVENTION_NAME}"
 echo ""
-echo "💡 Tip: The more specific you are, the better Ralph can build it!"
+echo "💡 Tip: The more specific you are, the better Rube Goldberg can build it!"

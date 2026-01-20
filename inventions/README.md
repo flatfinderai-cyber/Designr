@@ -7,7 +7,7 @@ This system helps you:
 - **Prototype** designs automatically
 - **Test** concepts iteratively
 - **Build** working implementations
-- **Iterate** on designs with Ralph
+- **Iterate** on designs with Rube Goldberg
 
 ## How This Helps Inventors
 
@@ -22,12 +22,12 @@ This system helps you:
 7. Maybe it works?
 ```
 
-### Ralph-Powered Invention Process:
+### Rube Goldberg-Powered Invention Process:
 ```
 1. Have idea
 2. Document it in a workflow file
-3. Start Ralph loop
-4. Ralph builds, tests, and iterates automatically
+3. Start Rube Goldberg loop
+4. Rube Goldberg builds, tests, and iterates automatically
 5. You review the working prototype
 ```
 
@@ -74,7 +74,7 @@ inventions/
 
 **Every invention is an iterative process.**
 
-Ralph excels at iteration - it tries, fails, learns, and improves. Just like inventing!
+Rube Goldberg excels at iteration - it tries, fails, learns, and improves. Just like inventing!
 
 Your role: Define WHAT you want to invent
-Ralph's role: Figure out HOW to build it through iteration
+Rube Goldberg's role: Figure out HOW to build it through iteration

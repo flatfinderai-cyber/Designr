@@ -95,11 +95,11 @@ Explain the core mechanism/principle.
 ### Test Cases
 1. **Test 1:** [What to test]
    - Expected: [What should happen]
-   - Actual: [What actually happened - filled by Ralph]
+   - Actual: [What actually happened - filled by Rube Goldberg]
 
 2. **Test 2:** [What to test]
    - Expected: [What should happen]
-   - Actual: [What actually happened - filled by Ralph]
+   - Actual: [What actually happened - filled by Rube Goldberg]
 
 ### Success Criteria
 
@@ -114,7 +114,7 @@ The invention is complete when:
 
 ## Iteration Notes
 
-*Ralph will document iterations here:*
+*Rube Goldberg will document iterations here:*
 
 ### Iteration 1
 - What was attempted:
@@ -142,14 +142,14 @@ When ALL success criteria are met, output:
 
 ---
 
-## Usage with Ralph
+## Usage with Rube Goldberg
 
 1. Fill out this template completely
 2. Be specific about build steps and verification
 3. Define clear success criteria
-4. Start Ralph loop with:
+4. Start Rube Goldberg loop with:
    ```bash
    ./inventions/scripts/start-invention.sh [invention-name]
    ```
-5. Ralph will build, test, iterate until complete
+5. Rube Goldberg will build, test, iterate until complete
 6. Review the working prototype!

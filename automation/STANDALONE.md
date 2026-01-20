@@ -102,11 +102,11 @@ The `automation/` directory is **fully self-contained**:
 automation/
 ├── README.md                 # Overview
 ├── HOW-TO-USE.md             # Detailed usage guide
-├── AUTO-ACCEPT-SETUP.md      # Ralph auto-accept configuration
+├── AUTO-ACCEPT-SETUP.md      # Rube Goldberg auto-accept configuration
 ├── quick-start.sh            # Quick start script
-├── start-ralph.sh            # Start Ralph automation
+├── start-rube-goldberg.sh            # Start Rube Goldberg automation
 ├── scripts/                  # Helper scripts
-│   ├── setup-ralph-project.sh
+│   ├── setup-rube-goldberg-project.sh
 │   ├── setup-claude-code.sh
 │   └── verify-installation.sh
 ├── templates/                # Setup templates
@@ -129,8 +129,8 @@ cd automation
 # Edit the workflow file
 vim workflows/my-tool-name-setup.md
 
-# Start Ralph to execute it
-./start-ralph.sh my-tool-name
+# Start Rube Goldberg to execute it
+./start-rube-goldberg.sh my-tool-name
 ```
 
 ---
@@ -144,7 +144,7 @@ vim workflows/my-tool-name-setup.md
 ### For Full Functionality
 - **Node.js 18+** (if automating Node.js tools)
 - **Python 3.11+** (if automating Python tools)
-- **Claude Code CLI** or **Claude Desktop** (for Ralph loops)
+- **Claude Code CLI** or **Claude Desktop** (for Rube Goldberg loops)
 
 ---
 
@@ -195,7 +195,7 @@ git pull origin main
 ## Related Systems
 
 This repository also contains:
-- **inventions/** - Ralph Loop invention system
+- **inventions/** - Rube Goldberg Loop invention system
 - **DesignrLabs/** - Separate app (see separate repo)
 - **YoutubeApp/** - YouTube to lesson converter
 

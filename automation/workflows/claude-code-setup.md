@@ -1,12 +1,12 @@
 ---
-tool_name: "Claude Code + Ralph Plugin"
-purpose: "Complete Claude Code development environment with Ralph Wiggum plugin"
+tool_name: "Claude Code + Rube Goldberg Plugin"
+purpose: "Complete Claude Code development environment with Rube Goldberg plugin"
 platform: "macos"
 ---
 
-# Claude Code + Ralph Plugin Setup
+# Claude Code + Rube Goldberg Plugin Setup
 
-Complete automated setup for Claude Code CLI with Ralph Wiggum plugin and optimal configuration.
+Complete automated setup for Claude Code CLI with Rube Goldberg plugin and optimal configuration.
 
 ## Prerequisites
 
@@ -114,15 +114,15 @@ claude auth login
 **Verify:** `claude auth status`
 **Expected:** "Authenticated as [your email]"
 
-### Phase 3: Ralph Plugin Setup
+### Phase 3: Rube Goldberg Plugin Setup
 
-**Step 7: Verify Ralph Plugin**
+**Step 7: Verify Rube Goldberg Plugin**
 ```bash
-# Ralph Wiggum is built into Claude Code
+# Rube Goldberg is built into Claude Code
 # Check that it's available
-claude --help | grep -i ralph || echo "Ralph should be available via /ralph-loop command"
+claude --help | grep -i rube-goldberg || echo "Rube Goldberg should be available via /rube-goldberg-loop command"
 ```
-**Verify:** Ralph commands exist
+**Verify:** Rube Goldberg commands exist
 **Expected:** Plugin is built-in and available
 
 **Step 8: Create Project Structure**
@@ -163,7 +163,7 @@ EOF
 cd ~/test-claude-project
 mkdir -p .claude
 
-# Project settings with Ralph permissions
+# Project settings with Rube Goldberg permissions
 cat > .claude/settings.local.json << 'EOF'
 {
   "permissions": {
@@ -172,7 +172,7 @@ cat > .claude/settings.local.json << 'EOF'
       "Read",
       "Write",
       "Edit",
-      "Skill(ralph-wiggum:*)"
+      "Skill(rube-goldberg-wiggum:*)"
     ]
   }
 }
@@ -181,7 +181,7 @@ EOF
 **Verify:** `cat .claude/settings.local.json`
 **Expected:** Valid project settings
 
-### Phase 4: Test Ralph Plugin
+### Phase 4: Test Rube Goldberg Plugin
 
 **Step 11: Create Test File**
 ```bash
@@ -189,7 +189,7 @@ cd ~/test-claude-project
 
 # Create a simple test file
 cat > test.txt << 'EOF'
-This is a test file for Ralph.
+This is a test file for Rube Goldberg.
 EOF
 
 git add test.txt
@@ -210,13 +210,13 @@ claude --message "Read test.txt and confirm you can see it"
 **Verify:** Claude responds successfully
 **Expected:** Claude reads the file and responds
 
-**Step 13: Create Ralph Loop Test**
+**Step 13: Create Rube Goldberg Loop Test**
 ```bash
 cd ~/test-claude-project
 
-# Create a simple Ralph loop state file manually
+# Create a simple Rube Goldberg loop state file manually
 mkdir -p .claude
-cat > .claude/ralph-loop.local.md << 'EOF'
+cat > .claude/rube-goldberg-loop.local.md << 'EOF'
 ---
 active: true
 iteration: 1
@@ -225,13 +225,13 @@ completion_promise: "TEST COMPLETE"
 started_at: "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 ---
 
-Add the text "Ralph was here!" to test.txt
+Add the text "Rube Goldberg was here!" to test.txt
 
 When done, output: <promise>TEST COMPLETE</promise>
 EOF
 ```
 **Verify:** File created
-**Expected:** Ralph loop state file exists
+**Expected:** Rube Goldberg loop state file exists
 
 ### Phase 5: Install Optional Tools
 
@@ -350,10 +350,10 @@ cd /path/to/project
 claude
 ```
 
-## Ralph Loop Commands
-- `/ralph-loop "Your task" --max-iterations 10` - Start Ralph
-- `/cancel-ralph` - Cancel active Ralph loop
-- `/ralph-loop --help` - Ralph help
+## Rube Goldberg Loop Commands
+- `/rube-goldberg-loop "Your task" --max-iterations 10` - Start Rube Goldberg
+- `/cancel-rube-goldberg` - Cancel active Rube Goldberg loop
+- `/rube-goldberg-loop --help` - Rube Goldberg help
 
 ## Useful Commands
 - `claude auth status` - Check authentication
@@ -363,13 +363,13 @@ claude
 ## Config Locations
 - Global: `~/.claude/settings.json`
 - Project: `.claude/settings.local.json`
-- Ralph state: `.claude/ralph-loop.local.md`
+- Rube Goldberg state: `.claude/rube-goldberg-loop.local.md`
 
 ## Tips
 - Always work in git repositories
 - Set max_iterations to prevent infinite loops
 - Use completion promises for auto-stop
-- Check `.claude/ralph-loop.local.md` for progress
+- Check `.claude/rube-goldberg-loop.local.md` for progress
 EOF
 ```
 **Verify:** `cat ~/claude-quick-ref.md`
@@ -383,7 +383,7 @@ The setup is complete when ALL of these are true:
 
 - [ ] `claude --version` outputs version number
 - [ ] `claude auth status` shows authenticated
-- [ ] Ralph plugin is accessible (built-in)
+- [ ] Rube Goldberg plugin is accessible (built-in)
 - [ ] Test project created in ~/test-claude-project
 - [ ] Project settings configured
 - [ ] Essential tools installed (jq, git)
@@ -401,11 +401,11 @@ The setup is complete when ALL of these are true:
 
 ## Post-Setup Next Steps
 
-1. **Test Ralph:**
+1. **Test Rube Goldberg:**
    ```bash
    cd ~/test-claude-project
    claude
-   # Then: /ralph-loop "Add hello world function" --max-iterations 5
+   # Then: /rube-goldberg-loop "Add hello world function" --max-iterations 5
    ```
 
 2. **Set up your first real project:**
@@ -443,9 +443,9 @@ claude auth logout
 claude auth login
 ```
 
-### Ralph not working
-- Ensure `.claude/settings.local.json` allows Ralph skills
-- Check `Skill(ralph-wiggum:*)` is in permissions.allow
+### Rube Goldberg not working
+- Ensure `.claude/settings.local.json` allows Rube Goldberg skills
+- Check `Skill(rube-goldberg-wiggum:*)` is in permissions.allow
 
 ### Permission errors
 Add to `.claude/settings.local.json`:
@@ -453,7 +453,7 @@ Add to `.claude/settings.local.json`:
 {
   "permissions": {
     "defaultMode": "dontAsk",
-    "allow": ["Bash", "Read", "Write", "Edit", "Skill(ralph-wiggum:*)"]
+    "allow": ["Bash", "Read", "Write", "Edit", "Skill(rube-goldberg-wiggum:*)"]
   }
 }
 ```
@@ -464,14 +464,14 @@ Add to `.claude/settings.local.json`:
 
 - This setup is optimized for macOS
 - For Linux, skip Xcode step and adjust Homebrew path
-- Ralph Wiggum is built into Claude Code (no separate installation needed)
+- Rube Goldberg is built into Claude Code (no separate installation needed)
 - The invention automation system (Designr) is separate and can be added after
 
 ---
 
 ## Iteration Log
 
-*Ralph will document setup attempts here:*
+*Rube Goldberg will document setup attempts here:*
 
 ### Iteration 1
 - Attempted:

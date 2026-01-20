@@ -23,7 +23,7 @@ This document provides a complete overview of the Designr Automation System and 
 │  │         Core Components                              │  │
 │  ├──────────────────────────────────────────────────────┤  │
 │  │  • Workflow Files      → Your automation specs      │  │
-│  │  • Ralph Loop          → Automated execution        │  │
+│  │  • Rube Goldberg Loop          → Automated execution        │  │
 │  │  • Helper Scripts      → Setup & verification       │  │
 │  │  • Templates           → Starter files              │  │
 │  │  • Documentation       → Complete guides            │  │
@@ -34,8 +34,8 @@ This document provides a complete overview of the Designr Automation System and 
 │  ├──────────────────────────────────────────────────────┤  │
 │  │  1. Create workflow    → ./quick-start.sh tool      │  │
 │  │  2. Define steps       → Edit workflow file         │  │
-│  │  3. Start Ralph        → ./start-ralph.sh tool      │  │
-│  │  4. Ralph executes     → Automated building         │  │
+│  │  3. Start Rube Goldberg        → ./start-rube-goldberg.sh tool      │  │
+│  │  4. Rube Goldberg executes     → Automated building         │  │
 │  │  5. Completion         → Tool ready to use          │  │
 │  └──────────────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────┘
@@ -52,19 +52,19 @@ automation/
 │   ├── STANDALONE.md              # Standalone installation guide
 │   ├── HOW-TO-USE.md              # Detailed step-by-step guide
 │   ├── QUICK-REFERENCE.md         # Quick reference cheat sheet
-│   ├── AUTO-ACCEPT-SETUP.md       # Ralph auto-accept configuration
+│   ├── AUTO-ACCEPT-SETUP.md       # Rube Goldberg auto-accept configuration
 │   ├── CONTRIBUTING.md            # Contribution guidelines
 │   └── COMPLETE-OVERVIEW.md       # This file
 │
 ├── 🔧 Main Scripts
 │   ├── quick-start.sh             # Create new automation workflow
-│   ├── start-ralph.sh             # Start Ralph automation loop
+│   ├── start-rube-goldberg.sh             # Start Rube Goldberg automation loop
 │   └── download-automation.sh     # One-command download script
 │
 ├── 🛠️  Helper Scripts (scripts/)
 │   ├── extract-standalone.sh      # Extract as standalone system
 │   ├── setup-claude-code.sh       # Setup Claude Code CLI
-│   ├── setup-ralph-project.sh     # Setup Ralph project structure
+│   ├── setup-rube-goldberg-project.sh     # Setup Rube Goldberg project structure
 │   ├── verify-installation.sh     # Verify tool installation
 │   └── test-structure.sh          # Test automation system structure
 │
@@ -88,7 +88,7 @@ User runs:
          ↓
 Creates:
 workflows/docker-setup.md
-.claude/ralph-loop.local.md (if not exists)
+.claude/rube-goldberg-loop.local.md (if not exists)
          ↓
 User edits:
 workflows/docker-setup.md
@@ -99,22 +99,22 @@ workflows/docker-setup.md
 
 ```
 User runs:
-./start-ralph.sh docker
+./start-rube-goldberg.sh docker
          ↓
-Ralph reads:
+Rube Goldberg reads:
 workflows/docker-setup.md
-.claude/ralph-loop.local.md
+.claude/rube-goldberg-loop.local.md
          ↓
-Ralph executes:
+Rube Goldberg executes:
 Step 1 → Verify → Step 2 → Verify → ...
          ↓
-Ralph commits progress
+Rube Goldberg commits progress
          ↓
-Ralph outputs:
+Rube Goldberg outputs:
 <promise>SETUP COMPLETE</promise>
 ```
 
-### 3. Ralph Iteration Loop
+### 3. Rube Goldberg Iteration Loop
 
 ```
 ┌─────────────────────────────────────────┐
@@ -259,8 +259,8 @@ cd automation
 ```bash
 ./quick-start.sh python-jupyter
 # Paste Claude's steps into workflows/python-jupyter-setup.md
-./start-ralph.sh python-jupyter
-# Ralph installs everything automatically
+./start-rube-goldberg.sh python-jupyter
+# Rube Goldberg installs everything automatically
 ```
 
 **Time:** 5 minutes vs 2 hours
@@ -274,8 +274,8 @@ cd automation
 ```bash
 ./quick-start.sh docker-k8s
 # Add steps: Install Docker, kubectl, minikube, configure, verify
-./start-ralph.sh docker-k8s
-# Ralph handles all steps and verifies each one
+./start-rube-goldberg.sh docker-k8s
+# Rube Goldberg handles all steps and verifies each one
 ```
 
 **Time:** 5 minutes vs 3 hours
@@ -290,12 +290,12 @@ cd automation
 # You create and test the workflow once
 ./quick-start.sh team-dev-env
 # ... add steps ...
-./start-ralph.sh team-dev-env
+./start-rube-goldberg.sh team-dev-env
 
 # Team members download just the automation system
 curl -fsSL https://[...]/download-automation.sh | bash
 cd designr-automation
-./start-ralph.sh team-dev-env
+./start-rube-goldberg.sh team-dev-env
 ```
 
 **Result:** Consistent environment for entire team
@@ -355,7 +355,7 @@ cat workflows/your-tool-setup.md
 
 ### User Benefits
 - **Time Savings:** 90-95% reduction in setup time
-- **Error Reduction:** Ralph handles debugging automatically
+- **Error Reduction:** Rube Goldberg handles debugging automatically
 - **Consistency:** Same results every time
 - **Portability:** Works anywhere with bash
 - **Scalability:** Run multiple automations in parallel
@@ -367,9 +367,9 @@ cat workflows/your-tool-setup.md
 This repository also contains:
 
 ### Inventions System (`inventions/`)
-Build digital inventions with Ralph Wiggum loops
+Build digital inventions with Rube Goldberg loops
 - Create invention specifications
-- Ralph builds prototypes automatically
+- Rube Goldberg builds prototypes automatically
 - 10x faster invention development
 
 ### App Store (`DESIGNR-APP-STORE.md`)
@@ -396,7 +396,7 @@ Micro-SaaS app collection
 ### Learning Path
 1. Try example: `workflows/example-nodejs-setup.md`
 2. Create simple workflow (3-5 steps)
-3. Test with Ralph
+3. Test with Rube Goldberg
 4. Create complex workflows
 5. Share with team/community
 

@@ -14,7 +14,7 @@ Claude responds with 50 steps like:
 ... 45 more steps
 ```
 
-**Instead of doing all that manually**, this system lets Ralph do it for you!
+**Instead of doing all that manually**, this system lets Rube Goldberg do it for you!
 
 ---
 
@@ -30,9 +30,9 @@ cp automation/templates/setup-template.md automation/workflows/my-setup.md
 
 Edit `my-setup.md` and **paste the instructions Claude gave you**.
 
-### Step 2: Start the Ralph Loop
+### Step 2: Start the Rube Goldberg Loop
 
-Create `.claude/ralph-loop.local.md`:
+Create `.claude/rube-goldberg-loop.local.md`:
 
 ```markdown
 ---
@@ -53,9 +53,9 @@ When ALL steps are complete and verified, output:
 <promise>SETUP COMPLETE</promise>
 ```
 
-### Step 3: Let Ralph Work
+### Step 3: Let Rube Goldberg Work
 
-Ralph will:
+Rube Goldberg will:
 - ✅ Read your setup instructions
 - ✅ Execute each step in order
 - ✅ Verify success
@@ -131,7 +131,7 @@ kubectl get nodes
 - [ ] `kubectl get nodes` shows Ready
 ```
 
-**2. Create Ralph loop state (`.claude/ralph-loop.local.md`):**
+**2. Create Rube Goldberg loop state (`.claude/rube-goldberg-loop.local.md`):**
 
 ```markdown
 ---
@@ -149,9 +149,9 @@ Fix any errors that occur.
 Output <promise>K8S READY</promise> only when everything works.
 ```
 
-**3. Watch Ralph work!**
+**3. Watch Rube Goldberg work!**
 
-Ralph will execute everything, handle errors, and tell you when it's done.
+Rube Goldberg will execute everything, handle errors, and tell you when it's done.
 
 ---
 
@@ -163,7 +163,7 @@ Ralph will execute everything, handle errors, and tell you when it's done.
 2. **Add verification commands** after each step
 3. **Define success criteria** at the end
 4. **Set a completion promise**
-5. **Let Ralph execute**
+5. **Let Rube Goldberg execute**
 
 ### Template for Converting:
 
@@ -199,25 +199,25 @@ Output <promise>SETUP COMPLETE</promise> when all criteria met.
 
 ### ❌ DON'T:
 - Leave verification steps vague
-- Set max_iterations too low (Ralph might not finish)
-- Forget the completion promise (Ralph runs forever!)
+- Set max_iterations too low (Rube Goldberg might not finish)
+- Forget the completion promise (Rube Goldberg runs forever!)
 - Mix multiple unrelated setups in one workflow
 
 ---
 
 ## Monitoring Progress
 
-While Ralph is working:
+While Rube Goldberg is working:
 
 ```bash
 # Check current iteration
-grep '^iteration:' .claude/ralph-loop.local.md
+grep '^iteration:' .claude/rube-goldberg-loop.local.md
 
-# See what Ralph is working on
-tail -20 .claude/ralph-loop.local.md
+# See what Rube Goldberg is working on
+tail -20 .claude/rube-goldberg-loop.local.md
 
 # Cancel if needed
-/cancel-ralph
+/cancel-rube-goldberg
 ```
 
 ---
@@ -243,9 +243,9 @@ You can use these as templates for your own setups.
 6. Repeat for 50 steps
 ⏰ **Time: 2-3 hours**
 
-**Ralph Way:**
+**Rube Goldberg Way:**
 1. Paste instructions into a file
-2. Start Ralph loop
+2. Start Rube Goldberg loop
 3. Go get coffee ☕
 4. Come back to completed setup
 ⏰ **Time: 5 minutes of your time**
@@ -260,7 +260,7 @@ Next time Claude Desktop gives you setup instructions:
 1. Create a file in `automation/workflows/`
 2. Paste the instructions
 3. Add verification steps
-4. Start a Ralph loop
-5. Let Ralph handle it!
+4. Start a Rube Goldberg loop
+5. Let Rube Goldberg handle it!
 
 **You'll never manually execute long setup instructions again!**

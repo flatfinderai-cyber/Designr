@@ -20,17 +20,17 @@ curl -fsSL https://raw.githubusercontent.com/flatfinderai-cyber/Designr/main/aut
 
 Creates:
 - `workflows/<tool-name>-setup.md` - Your setup instructions
-- `.claude/ralph-loop.local.md` - Ralph control file (if doesn't exist)
+- `.claude/rube-goldberg-loop.local.md` - Rube Goldberg control file (if doesn't exist)
 
 ---
 
-## Start Ralph Automation
+## Start Rube Goldberg Automation
 
 ```bash
-./start-ralph.sh <tool-name>
+./start-rube-goldberg.sh <tool-name>
 ```
 
-Ralph will:
+Rube Goldberg will:
 1. Read `workflows/<tool-name>-setup.md`
 2. Execute each step
 3. Verify success
@@ -39,29 +39,29 @@ Ralph will:
 
 ---
 
-## Monitor Ralph Progress
+## Monitor Rube Goldberg Progress
 
 ```bash
 # Check current iteration
-grep '^iteration:' .claude/ralph-loop.local.md
+grep '^iteration:' .claude/rube-goldberg-loop.local.md
 
-# View Ralph's work
-tail -20 .claude/ralph-loop.local.md
+# View Rube Goldberg's work
+tail -20 .claude/rube-goldberg-loop.local.md
 
-# View git commits (Ralph commits progress)
+# View git commits (Rube Goldberg commits progress)
 git log --oneline -5
 ```
 
 ---
 
-## Cancel Ralph
+## Cancel Rube Goldberg
 
 ```bash
 # Stop the loop
-rm .claude/ralph-loop.local.md
+rm .claude/rube-goldberg-loop.local.md
 
 # Or edit and set: active: false
-vim .claude/ralph-loop.local.md
+vim .claude/rube-goldberg-loop.local.md
 ```
 
 ---
@@ -89,7 +89,7 @@ automation/
 ```bash
 ./quick-start.sh postgres
 vim workflows/postgres-setup.md  # Add setup steps
-./start-ralph.sh postgres         # Let Ralph execute
+./start-rube-goldberg.sh postgres         # Let Rube Goldberg execute
 ```
 
 ### Convert Claude Instructions
@@ -98,7 +98,7 @@ vim workflows/postgres-setup.md  # Add setup steps
 3. `./quick-start.sh <tool-name>`
 4. Paste into `workflows/<tool-name>-setup.md`
 5. Add verification steps
-6. `./start-ralph.sh <tool-name>`
+6. `./start-rube-goldberg.sh <tool-name>`
 
 ### Extract Standalone Copy
 ```bash
@@ -134,7 +134,7 @@ Output <promise>DOCKER READY</promise> when:
 
 ---
 
-## Ralph Loop Structure
+## Rube Goldberg Loop Structure
 
 ```markdown
 ---
@@ -175,7 +175,7 @@ Output <promise>SETUP COMPLETE</promise> when done.
 - **README.md** - System overview
 - **HOW-TO-USE.md** - Detailed usage guide
 - **STANDALONE.md** - Standalone installation
-- **AUTO-ACCEPT-SETUP.md** - Ralph configuration
+- **AUTO-ACCEPT-SETUP.md** - Rube Goldberg configuration
 - **QUICK-REFERENCE.md** - This file
 
 ---

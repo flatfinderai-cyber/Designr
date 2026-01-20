@@ -6,7 +6,7 @@
 
 ## What's Been Built
 
-You now have a **complete automated invention system** that uses Ralph Wiggum to build digital inventions 10x faster.
+You now have a **complete automated invention system** that uses Rube Goldberg to build digital inventions 10x faster.
 
 **Commit:** `3e5742d` - "Add complete automated invention & development system"
 
@@ -36,7 +36,7 @@ cd /Users/hella.crypto/cloud-projects/Designr
 ./inventions/scripts/start-invention.sh example-smart-clipboard
 ```
 
-Ralph will build a complete clipboard manager tool automatically.
+Rube Goldberg will build a complete clipboard manager tool automatically.
 
 ### Option 2: Build Your Own Invention (30 min)
 
@@ -58,10 +58,10 @@ vim inventions/active/my-invention.md
 # - Your solution
 # - How to build it (be specific!)
 
-# Start Ralph
+# Start Rube Goldberg
 ./inventions/scripts/start-invention.sh my-invention
 
-# Ralph builds it automatically!
+# Rube Goldberg builds it automatically!
 ```
 
 ### Option 3: Automate Dev Tool Setup
@@ -75,8 +75,8 @@ Next time you get complex installation instructions:
 # Edit and add the installation steps
 vim automation/workflows/tool-name-setup.md
 
-# Let Ralph execute it
-./automation/start-ralph.sh tool-name
+# Let Rube Goldberg execute it
+./automation/start-rube-goldberg.sh tool-name
 ```
 
 ---
@@ -89,7 +89,7 @@ vim automation/workflows/tool-name-setup.md
 - **GETTING-STARTED.md** - Detailed system guide
 
 ### For Building Inventions
-- **inventions/HOW-TO-INVENT-WITH-RALPH.md** - Complete invention guide
+- **inventions/HOW-TO-INVENT-WITH-RUBE_GOLDBERG.md** - Complete invention guide
 - **inventions/active/example-smart-clipboard.md** - Working example
 - **inventions/active/my-invention-name.md** - Template you can use
 
@@ -134,7 +134,7 @@ Designr/
 ├── inventions/                ← Build digital inventions
 │   ├── scripts/
 │   │   ├── new-invention.sh  ← Create new invention
-│   │   └── start-invention.sh ← Build with Ralph
+│   │   └── start-invention.sh ← Build with Rube Goldberg
 │   ├── active/               ← Inventions you're building
 │   │   ├── example-smart-clipboard.md ← Working example
 │   │   └── my-invention-name.md ← Template
@@ -143,7 +143,7 @@ Designr/
 │
 └── automation/               ← Automate dev tool setups
     ├── quick-start.sh        ← Create setup workflow
-    ├── start-ralph.sh        ← Execute workflow
+    ├── start-rube-goldberg.sh        ← Execute workflow
     └── scripts/
         └── setup-claude-code.sh ← Install Claude Code
 ```
@@ -156,7 +156,7 @@ Designr/
 # Create new invention
 ./inventions/scripts/new-invention.sh my-idea
 
-# Build invention with Ralph
+# Build invention with Rube Goldberg
 ./inventions/scripts/start-invention.sh my-idea
 
 # Try the example
@@ -166,7 +166,7 @@ Designr/
 ./automation/quick-start.sh tool-name
 
 # Run automation
-./automation/start-ralph.sh tool-name
+./automation/start-rube-goldberg.sh tool-name
 
 # Setup Claude Code
 ./automation/scripts/setup-claude-code.sh
@@ -174,11 +174,11 @@ Designr/
 
 ---
 
-## What Ralph Does
+## What Rube Goldberg Does
 
-**You describe what to build** → **Ralph builds it automatically**
+**You describe what to build** → **Rube Goldberg builds it automatically**
 
-Ralph:
+Rube Goldberg:
 - Reads your specification
 - Writes the code
 - Tests each component
@@ -197,7 +197,7 @@ Ralph:
 - Manual coding and debugging
 - 3-5 hours per invention
 
-### With Ralph:
+### With Rube Goldberg:
 - 10-20 prototypes per week
 - Automated building and debugging
 - 30 minutes per invention
@@ -271,7 +271,7 @@ All answers are in the documentation:
 - General overview → `START-HERE.md`
 - For inventors → `INVENTOR-QUICKSTART.md`
 - Detailed guide → `GETTING-STARTED.md`
-- Building inventions → `inventions/HOW-TO-INVENT-WITH-RALPH.md`
+- Building inventions → `inventions/HOW-TO-INVENT-WITH-RUBE_GOLDBERG.md`
 - Setup automation → `automation/HOW-TO-USE.md`
 - Permissions → `AUTO-ACCEPT-SETUP.md`
 

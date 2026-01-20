@@ -4,17 +4,17 @@ applyTo: automation/**
 
 # Automation Folder Instructions
 
-This folder contains the Dev Tool Setup Automation System that uses Ralph Wiggum loops to automatically install and configure development tools.
+This folder contains the Dev Tool Setup Automation System that uses Rube Goldberg loops to automatically install and configure development tools.
 
 ## Purpose
 
-Transform complex setup instructions into automated workflows that Ralph executes without manual intervention.
+Transform complex setup instructions into automated workflows that Rube Goldberg executes without manual intervention.
 
 ## Key Concepts
 
-### Ralph Loop Architecture
+### Rube Goldberg Loop Architecture
 - **Workflow Files** (`automation/workflows/*.md`) - Detailed setup instructions
-- **Ralph Control** (`.claude/ralph-loop.local.md`) - Loop configuration
+- **Rube Goldberg Control** (`.claude/rube-goldberg-loop.local.md`) - Loop configuration
 - **Scripts** (`automation/scripts/`) - Helper utilities
 - **Templates** (`automation/templates/`) - Workflow templates
 
@@ -66,8 +66,8 @@ WORKFLOW_NAME=$(echo "$WORKFLOW_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 
 # Add detailed steps with verification
 
-# Start Ralph loop with workflow name (without -setup.md suffix)
-./automation/start-ralph.sh <workflow-name>
+# Start Rube Goldberg loop with workflow name (without -setup.md suffix)
+./automation/start-rube-goldberg.sh <workflow-name>
 ```
 
 ### Verification Commands
@@ -104,7 +104,7 @@ chmod +x automation/scripts/your-script.sh
 - Ensure cleanup on failure
 - Document troubleshooting steps
 
-## Ralph Best Practices
+## Rube Goldberg Best Practices
 
 ### DO:
 - Be specific with verification commands
@@ -115,15 +115,15 @@ chmod +x automation/scripts/your-script.sh
 
 ### DON'T:
 - Leave verification steps vague
-- Set max_iterations too low (Ralph might not finish)
-- Forget the completion promise (Ralph runs forever!)
+- Set max_iterations too low (Rube Goldberg might not finish)
+- Forget the completion promise (Rube Goldberg runs forever!)
 - Mix multiple unrelated setups in one workflow
 - Use placeholder implementations
 
 ## File Naming Conventions
 
 - Workflow files: `<workflow-name>-setup.md` where workflow-name can be multi-word kebab-case (e.g., `docker-setup.md`, `claude-code-setup.md`, `example-nodejs-setup.md`)
-- Scripts: `kebab-case.sh` (e.g., `start-ralph.sh`)
+- Scripts: `kebab-case.sh` (e.g., `start-rube-goldberg.sh`)
 - Templates: `descriptive-name-template.md`
 
 ## Common Tasks
@@ -140,16 +140,16 @@ chmod +x automation/scripts/your-script.sh
 3. Verify functionality
 4. Update documentation if behavior changes
 
-### Improve Ralph Instructions
+### Improve Rube Goldberg Instructions
 1. Identify repeated failures in workflows
 2. Add clarification to workflow markdown
 3. Update completion criteria
-4. Test with fresh Ralph loop
+4. Test with fresh Rube Goldberg loop
 
 ## Integration Points
 
 - **Quick Start**: `./automation/quick-start.sh` creates new workflows
-- **Start Ralph**: `./automation/start-ralph.sh` launches automation
+- **Start Rube Goldberg**: `./automation/start-rube-goldberg.sh` launches automation
 - **Verification**: `./automation/scripts/verify-installation.sh` checks installs
 - **Documentation**: All guides in `automation/*.md` files
 
@@ -159,12 +159,12 @@ chmod +x automation/scripts/your-script.sh
 - No secrets in workflow files
 - Use environment variables for sensitive data
 - Review auto-accept permissions carefully (see AUTO-ACCEPT-SETUP.md)
-- Ralph uses `report_progress` tool which commits to git - not automatic in automation scripts
+- Rube Goldberg uses `report_progress` tool which commits to git - not automatic in automation scripts
 
 ## Performance Notes
 
 - Script execution should be < 5 seconds
-- Ralph iterations: 1-3 minutes each typical
+- Rube Goldberg iterations: 1-3 minutes each typical
 - Complex setups: 20-40 iterations expected
 - Use parallel subagents for searches only
 

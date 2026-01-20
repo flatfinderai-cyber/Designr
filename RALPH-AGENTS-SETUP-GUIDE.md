@@ -1,8 +1,8 @@
-# Complete Setup Guide: AGENTS.md + Ralph Plugin for Zero-Intervention Development
+# Complete Setup Guide: AGENTS.md + Rube Goldberg Plugin for Zero-Intervention Development
 
 ## Overview
 
-This guide provides the complete requirements and steps to properly set up both AGENTS.md and the Ralph Wiggum plugin system for building applications with zero human intervention.
+This guide provides the complete requirements and steps to properly set up both AGENTS.md and the Rube Goldberg plugin system for building applications with zero human intervention.
 
 ---
 
@@ -20,9 +20,9 @@ AGENTS.md is a **README for AI agents** - a standardized file that provides cont
 
 **Key Point:** Agents automatically read AGENTS.md to understand how to work with your project.
 
-### What is Ralph Wiggum?
+### What is Rube Goldberg?
 
-Ralph is an **iterative AI automation technique** that builds software through:
+Rube Goldberg is an **iterative AI automation technique** that builds software through:
 1. Reading task specifications
 2. Implementing one thing per loop
 3. Testing and validating
@@ -41,12 +41,12 @@ Ralph is an **iterative AI automation technique** that builds software through:
 your-project/
 ├── AGENTS.md                    # Instructions for AI agents
 ├── .claude/
-│   ├── ralph-loop.local.md      # Ralph loop control file
+│   ├── rube-goldberg-loop.local.md      # Rube Goldberg loop control file
 │   └── settings.local.json      # Auto-accept permissions
 ├── specs/                       # Detailed specifications
 │   ├── PROJECT_SPEC.md
 │   └── stdlib/                  # Standard library specs (if applicable)
-├── fix_plan.md                  # TODO list for Ralph
+├── fix_plan.md                  # TODO list for Rube Goldberg
 ├── src/                         # Source code
 ├── tests/                       # Test files
 └── README.md                    # Human-readable documentation
@@ -56,12 +56,12 @@ your-project/
 
 | File | Purpose | Updated By |
 |------|---------|------------|
-| AGENTS.md | Instructions for how to build, test, run | Ralph (self-improving) |
-| .claude/ralph-loop.local.md | Loop control and current task | You (to start), Ralph (iteration counter) |
-| specs/*.md | Detailed requirements and specifications | You (initial), Ralph (refinements) |
-| fix_plan.md | Prioritized TODO list | Ralph (continuously) |
-| src/ | Implementation code | Ralph |
-| tests/ | Test suite | Ralph |
+| AGENTS.md | Instructions for how to build, test, run | Rube Goldberg (self-improving) |
+| .claude/rube-goldberg-loop.local.md | Loop control and current task | You (to start), Rube Goldberg (iteration counter) |
+| specs/*.md | Detailed requirements and specifications | You (initial), Rube Goldberg (refinements) |
+| fix_plan.md | Prioritized TODO list | Rube Goldberg (continuously) |
+| src/ | Implementation code | Rube Goldberg |
+| tests/ | Test suite | Rube Goldberg |
 
 ---
 
@@ -209,7 +209,7 @@ Replace all `[placeholders]` with your actual commands and requirements.
 
 ---
 
-## Part 4: Ralph Loop Setup
+## Part 4: Rube Goldberg Loop Setup
 
 ### Step 1: Create Specifications
 
@@ -294,35 +294,35 @@ src/
 cat > fix_plan.md << 'EOF'
 # Fix Plan / TODO List
 
-This file is continuously updated by Ralph with items to implement.
+This file is continuously updated by Rube Goldberg with items to implement.
 
 ## Current Priority
 
 ### High Priority
-- [ ] [Will be filled by Ralph]
+- [ ] [Will be filled by Rube Goldberg]
 
 ### Medium Priority
-- [ ] [Will be filled by Ralph]
+- [ ] [Will be filled by Rube Goldberg]
 
 ### Low Priority
-- [ ] [Will be filled by Ralph]
+- [ ] [Will be filled by Rube Goldberg]
 
 ## Completed
-- [x] [Completed items moved here by Ralph]
+- [x] [Completed items moved here by Rube Goldberg]
 
 ## Notes
-- This file is managed by Ralph
+- This file is managed by Rube Goldberg
 - Items are sorted by priority
 - Completed items are moved to bottom
 - File is cleaned periodically when it grows large
 EOF
 ```
 
-### Step 3: Create Ralph Loop Control File
+### Step 3: Create Rube Goldberg Loop Control File
 
 ```bash
 mkdir -p .claude
-cat > .claude/ralph-loop.local.md << 'EOF'
+cat > .claude/rube-goldberg-loop.local.md << 'EOF'
 ---
 active: true
 iteration: 1
@@ -331,7 +331,7 @@ completion_promise: "PROJECT COMPLETE"
 started_at: "2026-01-13T00:00:00Z"
 ---
 
-## Ralph Loop Task
+## Rube Goldberg Loop Task
 
 0a. Study @specs/* to learn about the project specifications
 0b. Study @AGENTS.md to learn how to build and test the project
@@ -386,7 +386,7 @@ Ensure `.claude/settings.local.json` has auto-accept enabled:
 **Why?** CLI tools are:
 - Self-contained
 - Easy to test
-- Fast build cycles (good for Ralph loops)
+- Fast build cycles (good for Rube Goldberg loops)
 - Clear success criteria
 
 ### Example: Task Manager CLI
@@ -705,7 +705,7 @@ touch tests/__init__.py
 
 # Copy the AGENTS.md and spec files created above
 # Copy the fix_plan.md template
-# Copy the .claude/ralph-loop.local.md file
+# Copy the .claude/rube-goldberg-loop.local.md file
 
 # Initialize git
 git init
@@ -713,14 +713,14 @@ git add .
 git commit -m "Initial project setup for Task Manager CLI"
 ```
 
-**Step 4: Start Ralph**
+**Step 4: Start Rube Goldberg**
 
 You have two options:
 
 **Option A: Manual Loop (Recommended for Learning)**
 ```bash
 while :; do
-    echo "=== Ralph Loop Iteration ==="
+    echo "=== Rube Goldberg Loop Iteration ==="
     claude-code
     sleep 2
 done
@@ -736,53 +736,53 @@ done
 
 ## Part 6: Monitoring and Troubleshooting
 
-### Monitoring Ralph's Progress
+### Monitoring Rube Goldberg's Progress
 
 ```bash
 # Check current iteration
-grep '^iteration:' .claude/ralph-loop.local.md
+grep '^iteration:' .claude/rube-goldberg-loop.local.md
 
-# See what Ralph is working on
-tail -50 .claude/ralph-loop.local.md
+# See what Rube Goldberg is working on
+tail -50 .claude/rube-goldberg-loop.local.md
 
 # Watch the TODO list evolve
 watch -n 5 cat fix_plan.md
 
-# Check git commits (Ralph commits after each successful iteration)
+# Check git commits (Rube Goldberg commits after each successful iteration)
 git log --oneline
 ```
 
 ### Common Issues and Solutions
 
-#### Ralph Gets Stuck in a Loop
+#### Rube Goldberg Gets Stuck in a Loop
 **Symptom:** Same error repeated multiple times
 **Solution:**
 1. Check if max_iterations is too low
-2. Add more specific instructions to ralph-loop.local.md
+2. Add more specific instructions to rube-goldberg-loop.local.md
 3. Update specs/ if requirements are unclear
 4. Reset: `git reset --hard HEAD~5` and adjust approach
 
-#### Ralph Makes Placeholder Implementations
+#### Rube Goldberg Makes Placeholder Implementations
 **Symptom:** Comments like `# TODO: implement` or minimal functions
 **Solution:**
-1. Add to ralph-loop.local.md: `DO NOT IMPLEMENT PLACEHOLDER OR SIMPLE IMPLEMENTATIONS. WE WANT FULL IMPLEMENTATIONS.`
+1. Add to rube-goldberg-loop.local.md: `DO NOT IMPLEMENT PLACEHOLDER OR SIMPLE IMPLEMENTATIONS. WE WANT FULL IMPLEMENTATIONS.`
 2. Increase urgency numbers: `9999999999. DO NOT USE PLACEHOLDERS`
 
-#### Ralph Can't Find Existing Code
+#### Rube Goldberg Can't Find Existing Code
 **Symptom:** Re-implementing things that exist
 **Solution:**
-1. Add to ralph-loop.local.md: `Before making changes search codebase (don't assume not implemented) using subagents`
+1. Add to rube-goldberg-loop.local.md: `Before making changes search codebase (don't assume not implemented) using subagents`
 2. Run a planning loop first to map existing code
 
 #### Tests Keep Failing
 **Symptom:** Same tests fail repeatedly
 **Solution:**
 1. Manually check if test expectations are correct
-2. Add specific debugging instruction to ralph-loop.local.md
-3. Tell Ralph to add logging: `Add detailed logging to debug test failures`
+2. Add specific debugging instruction to rube-goldberg-loop.local.md
+3. Tell Rube Goldberg to add logging: `Add detailed logging to debug test failures`
 
 #### Context Window Full
-**Symptom:** Ralph starts making unrelated changes
+**Symptom:** Rube Goldberg starts making unrelated changes
 **Solution:**
 1. Reduce to one item per loop
 2. Use more subagents: `You may use up to 100 parallel subagents`
@@ -792,20 +792,20 @@ git log --oneline
 
 ## Part 7: Checklist for Zero-Intervention Success
 
-### Before Starting Ralph
+### Before Starting Rube Goldberg
 
 - [ ] AGENTS.md exists with exact build/test commands
 - [ ] Specs are detailed and specific (not vague)
 - [ ] Each feature has clear success criteria
 - [ ] fix_plan.md template exists
-- [ ] .claude/ralph-loop.local.md configured
+- [ ] .claude/rube-goldberg-loop.local.md configured
 - [ ] .claude/settings.local.json has auto-accept enabled
 - [ ] Git repository initialized
 - [ ] Initial project structure created
 - [ ] Testing framework specified in AGENTS.md
 - [ ] Back pressure (quality gates) defined
 
-### During Ralph Execution
+### During Rube Goldberg Execution
 
 - [ ] Monitor iterations periodically
 - [ ] Check git commits for progress
@@ -832,7 +832,7 @@ git log --oneline
 
 ---
 
-## Part 8: Advanced Ralph Techniques
+## Part 8: Advanced Rube Goldberg Techniques
 
 ### Using Planning Loops
 
@@ -858,9 +858,9 @@ Use up to 100 subagents to:
 Output <promise>PLANNING COMPLETE</promise> when fix_plan.md is comprehensive.
 ```
 
-### Tuning Ralph for Your Project
+### Tuning Rube Goldberg for Your Project
 
-Add project-specific constraints to ralph-loop.local.md:
+Add project-specific constraints to rube-goldberg-loop.local.md:
 
 ```markdown
 # For web apps
@@ -880,17 +880,17 @@ Add project-specific constraints to ralph-loop.local.md:
 
 ### Parallel Building
 
-Run multiple Ralph loops for different modules:
+Run multiple Rube Goldberg loops for different modules:
 
 ```bash
 # Terminal 1: Core features
-cd project && cat .claude/ralph-loop-core.local.md | claude-code
+cd project && cat .claude/rube-goldberg-loop-core.local.md | claude-code
 
 # Terminal 2: CLI interface
-cd project && cat .claude/ralph-loop-cli.local.md | claude-code
+cd project && cat .claude/rube-goldberg-loop-cli.local.md | claude-code
 
 # Terminal 3: Tests
-cd project && cat .claude/ralph-loop-tests.local.md | claude-code
+cd project && cat .claude/rube-goldberg-loop-tests.local.md | claude-code
 ```
 
 ---
@@ -901,32 +901,32 @@ cd project && cat .claude/ralph-loop-tests.local.md | claude-code
    - Create AGENTS.md with exact commands
    - Write detailed specs in specs/
    - Create fix_plan.md template
-   - Configure .claude/ralph-loop.local.md
+   - Configure .claude/rube-goldberg-loop.local.md
    - Enable auto-accept permissions
 
 2. **Planning Phase** (Optional but Recommended)
-   - Run planning Ralph loop
+   - Run planning Rube Goldberg loop
    - Generate comprehensive fix_plan.md
    - Verify specs completeness
 
 3. **Building Phase** (Hands-Off)
-   - Start Ralph loop
-   - Ralph reads specs
-   - Ralph implements one thing per loop
-   - Ralph tests after each change
-   - Ralph commits when tests pass
-   - Ralph updates fix_plan.md
-   - Ralph self-improves AGENTS.md
+   - Start Rube Goldberg loop
+   - Rube Goldberg reads specs
+   - Rube Goldberg implements one thing per loop
+   - Rube Goldberg tests after each change
+   - Rube Goldberg commits when tests pass
+   - Rube Goldberg updates fix_plan.md
+   - Rube Goldberg self-improves AGENTS.md
 
 4. **Completion** (Automatic)
    - All specs implemented
    - All tests passing
-   - Ralph outputs completion promise
+   - Rube Goldberg outputs completion promise
    - Project ready to use
 
 **Time Investment:**
 - Setup: 30-60 minutes (one time)
 - Per project: 15-30 minutes (mostly writing specs)
-- Ralph building: 0 minutes of your time
+- Rube Goldberg building: 0 minutes of your time
 
 **Result:** Working application with comprehensive tests, built with zero intervention.

@@ -343,7 +343,7 @@ After AI processes input (URL/image/video), user can:
 
 ***
 
-## **Ralph Loop Prompt for Designr Labs™**
+## **Rube Goldberg Loop Prompt for Designr Labs™**
 
 Save as `.claude/designr-labs-loop.local.md`:
 

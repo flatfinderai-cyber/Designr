@@ -1,6 +1,6 @@
-# Ralph Loop Manual Setup Template
+# Rube Goldberg Loop Manual Setup Template
 
-To manually set up a Ralph loop, create `.claude/ralph-loop.local.md`:
+To manually set up a Rube Goldberg loop, create `.claude/rube-goldberg-loop.local.md`:
 
 ```markdown
 ---
@@ -39,14 +39,14 @@ Output <promise>USER AUTHENTICATION COMPLETE</promise> when all tests pass.
 
 ## To Cancel:
 
-Delete `.claude/ralph-loop.local.md` or run `/cancel-ralph`
+Delete `.claude/rube-goldberg-loop.local.md` or run `/cancel-rube-goldberg`
 
 ## To Monitor:
 
 ```bash
 # Check current iteration
-grep '^iteration:' .claude/ralph-loop.local.md
+grep '^iteration:' .claude/rube-goldberg-loop.local.md
 
 # View full state
-cat .claude/ralph-loop.local.md
+cat .claude/rube-goldberg-loop.local.md
 ```
