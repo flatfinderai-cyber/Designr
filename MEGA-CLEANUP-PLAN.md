@@ -26,9 +26,9 @@ Main Designr repo has 5+ apps/projects mixed in with automation system. Need cle
   - `README-APP-STORE.md`
 - Action: Create separate "Designr-App-Store" repo
 
-### 4. **Ralph TUI** (Terminal UI tool)
+### 4. **Rube Goldberg TUI** (Terminal UI tool)
 - Files:
-  - `ralph-tui-0.1.6.tar.gz`
+  - `ralph-tui-0.1.6.tar.gz` (original archive name)
   - Related docs (already renamed to Rube Goldberg)
 - Action: Extract and create separate repo
 
@@ -112,11 +112,11 @@ git commit -m "Initial commit: DesignrLabs documentation"
 # Create GitHub repo later when you have actual app code
 ```
 
-### Phase 4: Extract and organize Ralph TUI (5 min)
+### Phase 4: Extract and organize Rube Goldberg TUI (5 min)
 ```bash
 mkdir -p /tmp/rube-goldberg-tui
 cd /tmp/rube-goldberg-tui
-tar -xzf /workspaces/Designr/ralph-tui-0.1.6.tar.gz
+tar -xzf /workspaces/Designr/ralph-tui-0.1.6.tar.gz  # Original archive name
 git init
 git add .
 git commit -m "Initial commit: Rube Goldberg TUI extracted from archive"
