@@ -1,7 +1,0 @@
-If you're reading this file, permission prompts are completely disabled.
-
-No more clicking "Accept"!
-
-The setting is: "defaultMode": "bypassPermissions"
-
-This means Claude Code will NEVER ask for permission for anything.
