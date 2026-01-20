@@ -57,6 +57,36 @@ POST /api/deploy
 
 ---
 
+### YoutubeApp
+**ID**: `youtube-app`
+
+**YouTube MCP Server integration for automated content pipeline**
+
+Automated YouTube content processing and pipeline management using Model Context Protocol (MCP) server integration.
+
+| Property | Value |
+|----------|-------|
+| **Repository** | https://github.com/flatfinderai-cyber/YoutubeApp |
+| **Website** | Coming soon |
+| **Version** | 0.0.1 |
+| **Status** | Developing |
+| **Launch** | TBD |
+| **Owner** | Designr Labs Team |
+
+**Features**:
+- YouTube MCP Server integration
+- Automated content pipeline
+- Guide-me repo integration
+
+**Tech Stack**:
+- TypeScript
+- Model Context Protocol (MCP)
+- YouTube API integration
+
+**Status**: In development
+
+---
+
 ## 🔄 Adding a New App
 
 To submit your app to the Designr App Store:
