@@ -1,0 +1,106 @@
+version: '3.8'
+
+services:
+  # Designr Hub (App Store)
+  designr-hub:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://postgres:designr@postgres:5432/designr
+    depends_on:
+      - postgres
+      - supabase
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: pnpm dev
+
+  # DesignrLabs (Design to Code App)
+  designr-labs:
+    build:
+      context: ./DesignrLabs
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000"
+    environment:
+      NODE_ENV: development
+      NEXT_PUBLIC_SUPABASE_URL: http://supabase:8000
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: 
+      SUPABASE_SERVICE_ROLE_KEY: 
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+    depends_on:
+      - postgres
+      - supabase
+    volumes:
+      - ./DesignrLabs:/app
+      - /app/node_modules
+    command: pnpm dev
+
+  # PRD Generator
+  prd-generator:
+    build:
+      context: ./PRDGenerator
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3000"
+    environment:
+      NODE_ENV: development
+    volumes:
+      - ./PRDGenerator:/app
+      - /app/node_modules
+    command: pnpm dev
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: designr
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Supabase (for auth and real-time)
+  supabase:
+    image: supabase/supabase:latest
+    ports:
+      - "8000:8000"
+      - "5433:5432"
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      SITE_URL: http://localhost:3000
+      API_EXTERNAL_URL: http://localhost:8000
+    depends_on:
+      - postgres
+    volumes:
+      - supabase_data:/var/lib/supabase
+
+  # Redis (for caching)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  supabase_data:
+  redis_data:
+
+networks:
+  default:
+    name: designr-network

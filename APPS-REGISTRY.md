@@ -1,6 +1,17 @@
-# Designr App Registry
+# Designr Apps Registry
+
+**Last Updated:** January 16, 2026
+**Total Apps:** 4
+**Production Ready:** 3 ✅
+**Beta:** 1 🔧
 
 Central registry of all apps available in the Designr App Store.
+
+---
+
+## 📊 Registry Overview
+
+| App | Version | Status | Type | Repo | --- | --- | --- | --- | --- | --- | --- | DesignrLabs | 1.0.0 | ✅ Production | Next.js | flatfinderai-cyber/DesignrLabs | --- | Designr Hub | 1.0.0 | ✅ Production | Next.js | flatfinderai-cyber/Designr | --- | PRD Generator | 1.0.0 | ✅ Production | Next.js | Designr/PRDGenerator | --- | YouTube App | 0.1.0 | 🔧 Beta | Node.js | Designr/YoutubeApp |
 
 ---
 
@@ -9,18 +20,11 @@ Central registry of all apps available in the Designr App Store.
 ### DesignrLabs
 **ID**: `designr-labs`
 
-**Transform hand-drawn sketches into production-ready code**
+#### Transform hand-drawn sketches into production-ready code
 
 Convert UI sketches from paper, whiteboard, or iPad into interactive web applications with AI detection and code export.
 
-| Property | Value |
-|----------|-------|
-| **Repository** | https://github.com/flatfinderai-cyber/DesignrLabs |
-| **Website** | https://designrlabs.com |
-| **Version** | 0.0.1 |
-| **Status** | Developing |
-| **Launch** | Q2 2026 |
-| **Owner** | Designr Labs Team |
+| Property | Value | --- | --- | --- | --- | **Repository** | [github.com/flatfinderai-cyber/DesignrLabs](https://github.com/flatfinderai-cyber/DesignrLabs) | --- | **Website** | [designrlabs.com](https://designrlabs.com) | --- | **Version** | 0.0.1 | --- | **Status** | Developing | --- | **Launch** | Q2 2026 | --- | **Owner** | Designr Labs Team |
 
 **Features**:
 - Sketch Upload (drag-drop, camera, batch)
@@ -45,7 +49,8 @@ Convert UI sketches from paper, whiteboard, or iPad into interactive web applica
 - Team: $99/month (5 seats, API access)
 
 **API Endpoints**:
-```
+```bash
+
 POST /api/sketches/upload
 POST /api/ai/detect-elements
 POST /api/ai/generate-ui
@@ -53,7 +58,7 @@ POST /api/export/code
 POST /api/deploy
 ```
 
-**Health Check**: https://designrlabs.com/health
+**Health Check**: [designrlabs.com/health](https://designrlabs.com/health)
 
 ---
 
@@ -104,18 +109,11 @@ To submit your app to the Designr App Store:
 ### Your App Name
 **ID**: `your-app-id`
 
-**One-line description of what your app does**
+#### One-line description of what your app does
 
 Longer description with details about features and benefits.
 
-| Property | Value |
-|----------|-------|
-| **Repository** | https://github.com/your-org/your-app |
-| **Website** | https://your-app.com |
-| **Version** | 0.0.1 |
-| **Status** | Developing/Beta/Stable |
-| **Launch** | Q2 2026 |
-| **Owner** | Your Team Name |
+| Property | Value | --- | --- | --- | --- | **Repository** | [github.com/your-org/your-app](https://github.com/your-org/your-app) | --- | **Website** | [your-app.com](https://your-app.com) | --- | **Version** | 0.0.1 | --- | **Status** | Developing/Beta/Stable | --- | **Launch** | Q2 2026 | --- | **Owner** | Your Team Name |
 
 **Features**:
 - Feature 1
@@ -133,25 +131,20 @@ Longer description with details about features and benefits.
 - Team: Description
 
 **API Endpoints**:
-```
+```bash
+
 GET /api/...
 POST /api/...
 ```
 
-**Health Check**: https://your-app.com/health
+**Health Check**: [your-app.com/health](https://your-app.com/health)
 ```
 
 ---
 
 ## 📊 Registry Statistics
 
-| Metric | Value |
-|--------|-------|
-| Total Apps | 1 |
-| Apps Developing | 1 |
-| Apps Stable | 0 |
-| Total Users (Estimated) | TBD |
-| Total MRR | TBD |
+| Metric | Value | --- | --- | --- | --- | Total Apps | 1 | --- | Apps Developing | 1 | --- | Apps Stable | 0 | --- | Total Users (Estimated) | TBD | --- | Total MRR | TBD |
 
 ---
 
@@ -160,7 +153,8 @@ POST /api/...
 Each app provides these standard endpoints:
 
 ### Health Check
-```
+```bash
+
 GET /health
 
 Response:
@@ -172,7 +166,8 @@ Response:
 ```
 
 ### User Profile
-```
+```bash
+
 GET /api/v1/users/me
 
 Headers:
@@ -183,13 +178,14 @@ Response:
   "id": "uuid",
   "email": "user@example.com",
   "name": "User Name",
-  "avatar": "https://...",
+  "avatar": "[...",](https://...",)
   "created_at": "2025-01-16T10:30:00Z"
 }
 ```
 
 ### Projects/Workspace
-```
+```bash
+
 GET /api/v1/projects
 
 Response:
@@ -216,7 +212,8 @@ All apps support these auth methods:
 
 Inter-app authentication uses API keys:
 
-```
+```bash
+
 Authorization: Bearer designr-app-<app-id>-<api-key>
 X-App-ID: designr-labs
 X-Request-ID: uuid
@@ -235,7 +232,7 @@ POST /api/v1/webhooks/register
 {
   "target_app": "designr-labs",
   "event": "sketch.created",
-  "webhook_url": "https://your-app.com/webhooks/designr-labs",
+  "webhook_url": "[your-app.com/webhooks/designr-labs",](https://your-app.com/webhooks/designr-labs",)
   "events": [
     "sketch.created",
     "sketch.processed",
@@ -271,10 +268,10 @@ POST /api/v1/webhooks/register
 
 ## 📞 Support
 
-- **Developer Slack**: [Join](https://slack.designr.store)
-- **GitHub Issues**: [Report issues](https://github.com/flatfinderai-cyber/Designr/issues)
+- **Developer Slack**: [Join]([slack.designr.store](https://slack.designr.store))
+- **GitHub Issues**: [Report issues]([github.com/flatfinderai-cyber/Designr/issues](https://github.com/flatfinderai-cyber/Designr/issues))
 - **Email**: developers@designr.store
-- **Discord**: [Community](https://discord.gg/designr)
+- **Discord**: [Community]([discord.gg/designr](https://discord.gg/designr))
 
 ---
 
