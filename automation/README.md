@@ -50,7 +50,8 @@ automation/
 │   └── setup-template.md      # Template for new workflows
 ├── workflows/                 # Your automation workflows
 │   ├── example-nodejs-setup.md
-│   └── claude-code-setup.md
+│   ├── claude-code-setup.md
+│   └── github-mcp-setup.md
 └── scripts/                   # Helper scripts
     ├── extract-standalone.sh  # Extract automation as standalone
     ├── setup-claude-code.sh   # Setup Claude Code CLI
@@ -89,7 +90,10 @@ vim workflows/my-tool-setup.md
 
 ## Examples
 
-See [`workflows/example-nodejs-setup.md`](workflows/example-nodejs-setup.md) for a complete example of automating a Node.js environment setup.
+Available automation workflows:
+- **[Node.js Setup](workflows/example-nodejs-setup.md)** - Complete Node.js development environment
+- **[GitHub MCP Setup](workflows/github-mcp-setup.md)** - GitHub Model Context Protocol integration with Claude Desktop
+- **[Claude Code Setup](workflows/claude-code-setup.md)** - Claude Code CLI configuration
 
 ## Support
 
