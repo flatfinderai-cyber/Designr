@@ -1,7 +1,9 @@
 #!/bin/bash
 # Quick Start: Create a new automation workflow
 
-set -e
+# Source common functions
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/scripts/common.sh"
 
 echo "🚀 Dev Tool Setup Automation - Quick Start"
 echo ""
@@ -9,8 +11,8 @@ echo ""
 # Get workflow name
 read -p "What are you setting up? (e.g., 'docker', 'python-env'): " WORKFLOW_NAME
 
-# Sanitize name
-WORKFLOW_NAME=$(echo "$WORKFLOW_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+# Sanitize name using common function
+WORKFLOW_NAME=$(sanitize_name "$WORKFLOW_NAME")
 WORKFLOW_FILE="workflows/${WORKFLOW_NAME}-setup.md"
 
 echo ""
@@ -45,7 +47,7 @@ The setup is complete when:
 Output <promise>SETUP COMPLETE</promise> when all criteria are met.
 EOF
 
-echo "✅ Created: $WORKFLOW_FILE"
+echo_status "success" "Created: $WORKFLOW_FILE"
 echo ""
 echo "📋 Next steps:"
 echo "   1. Edit $WORKFLOW_FILE"

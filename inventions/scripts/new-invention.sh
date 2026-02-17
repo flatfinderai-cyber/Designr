@@ -1,14 +1,16 @@
 #!/bin/bash
 # Create a new invention specification
 
-set -e
+# Source common functions
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/../../automation/scripts/common.sh"
 
 echo "🔬 New Digital Invention Creator"
 echo ""
 
 # Get invention details
 read -p "Invention name (e.g., 'smart-email-filter'): " INVENTION_NAME
-INVENTION_NAME=$(echo "$INVENTION_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+INVENTION_NAME=$(sanitize_name "$INVENTION_NAME")
 
 read -p "Type (web-app/cli-tool/api/automation/extension): " INVENTION_TYPE
 read -p "Primary language (javascript/python/typescript/other): " LANGUAGE
@@ -234,7 +236,7 @@ Once Rube Goldberg finishes:
 4. Decide: Refine further or move to next invention?
 EOF
 
-echo "✅ Created: $INVENTION_FILE"
+echo_status "success" "Created: $INVENTION_FILE"
 echo ""
 echo "📋 Next steps:"
 echo "   1. Edit the file and fill in your invention details"
