@@ -55,7 +55,7 @@ prompt_confirm() {
     local prompt_text="$1"
     local reply
     
-    read -p "$prompt_text (y/n): " reply
+    read -r -p "$prompt_text (y/n): " reply
     if [[ ! "$reply" =~ ^[Yy]$ ]]; then
         echo "Cancelled."
         return 1
@@ -65,11 +65,20 @@ prompt_confirm() {
 
 # List available files in directory
 # Usage: list_available_files "directory/*.md" "prefix"
+# Note: Intentionally uses unquoted glob pattern for expansion
 list_available_files() {
     local pattern="$1"
     local prefix="${2:-  - }"
     
-    ls $pattern 2>/dev/null | sed "s/.*\//$prefix/" | sed 's/\.md$//' || echo "  (none yet)"
+    # Use find for safer file listing, fallback to ls for simple patterns
+    if [[ "$pattern" == */* ]]; then
+        local dir="${pattern%/*}"
+        local glob="${pattern##*/}"
+        find "$dir" -maxdepth 1 -name "$glob" 2>/dev/null | sed "s|.*/|$prefix|" | sed 's/\.md$//' || echo "  (none yet)"
+    else
+        # shellcheck disable=SC2012,SC2086
+        ls $pattern 2>/dev/null | sed "s/.*\//$prefix/" | sed 's/\.md$//' || echo "  (none yet)"
+    fi
 }
 
 # Create Rube Goldberg loop configuration
@@ -80,10 +89,11 @@ create_rube_goldberg_loop() {
     local promise="$3"
     local loop_type="$4"  # "automation" or "invention"
     local optional_name="${5:-}"
+    local started_at
     
     mkdir -p .claude
     
-    local started_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+    started_at=$(date -u +%Y-%m-%dT%H:%M:%SZ)
     
     cat > .claude/rube-goldberg-loop.local.md << EOF
 ---
@@ -205,14 +215,20 @@ sanitize_name() {
 
 # Extract value from YAML frontmatter
 # Usage: value=$(extract_yaml_value "filename.md" "key_name" "default_value")
+# Limitation: Assumes simple YAML values without colons inside quoted strings
+# For complex YAML parsing, consider using yq or a proper YAML parser
 extract_yaml_value() {
     local file="$1"
     local key="$2"
     local default="${3:-}"
+    local value
     
-    local value=$(grep "^${key}:" "$file" | head -1 | cut -d'"' -f2)
+    # Try to extract quoted value first
+    value=$(grep "^${key}:" "$file" | head -1 | sed -n 's/^[^:]*: *"\([^"]*\)".*/\1/p')
+    
+    # If no quoted value, try unquoted value
     if [ -z "$value" ]; then
-        value=$(grep "^${key}:" "$file" | head -1 | awk '{print $2}')
+        value=$(grep "^${key}:" "$file" | head -1 | sed -n 's/^[^:]*: *\([^ ]*\).*/\1/p')
     fi
     
     if [ -z "$value" ]; then

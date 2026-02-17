@@ -28,11 +28,11 @@ if ! check_file_exists "$WORKFLOW_FILE" "Workflow file not found: $WORKFLOW_FILE
 fi
 
 # Get completion promise from user
-read -p "Completion promise (or press Enter for 'SETUP COMPLETE'): " PROMISE
+read -r -p "Completion promise (or press Enter for 'SETUP COMPLETE'): " PROMISE
 PROMISE="${PROMISE:-SETUP COMPLETE}"
 
 # Get max iterations
-read -p "Max iterations (default: 20): " MAX_ITER
+read -r -p "Max iterations (default: 20): " MAX_ITER
 MAX_ITER="${MAX_ITER:-20}"
 
 echo ""

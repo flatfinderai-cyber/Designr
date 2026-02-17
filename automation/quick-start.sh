@@ -9,7 +9,7 @@ echo "🚀 Dev Tool Setup Automation - Quick Start"
 echo ""
 
 # Get workflow name
-read -p "What are you setting up? (e.g., 'docker', 'python-env'): " WORKFLOW_NAME
+read -r -p "What are you setting up? (e.g., 'docker', 'python-env'): " WORKFLOW_NAME
 
 # Sanitize name using common function
 WORKFLOW_NAME=$(sanitize_name "$WORKFLOW_NAME")

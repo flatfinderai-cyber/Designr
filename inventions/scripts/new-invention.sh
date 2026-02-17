@@ -9,11 +9,11 @@ echo "🔬 New Digital Invention Creator"
 echo ""
 
 # Get invention details
-read -p "Invention name (e.g., 'smart-email-filter'): " INVENTION_NAME
+read -r -p "Invention name (e.g., 'smart-email-filter'): " INVENTION_NAME
 INVENTION_NAME=$(sanitize_name "$INVENTION_NAME")
 
-read -p "Type (web-app/cli-tool/api/automation/extension): " INVENTION_TYPE
-read -p "Primary language (javascript/python/typescript/other): " LANGUAGE
+read -r -p "Type (web-app/cli-tool/api/automation/extension): " INVENTION_TYPE
+read -r -p "Primary language (javascript/python/typescript/other): " LANGUAGE
 
 # Create directory structure
 mkdir -p inventions/active
