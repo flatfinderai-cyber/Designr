@@ -52,11 +52,15 @@ automation/
 │   ├── example-nodejs-setup.md
 │   └── claude-code-setup.md
 └── scripts/                   # Helper scripts
+    ├── README.md              # Scripts documentation (NEW!)
+    ├── common.sh              # Shared functions library (NEW!)
     ├── extract-standalone.sh  # Extract automation as standalone
     ├── setup-claude-code.sh   # Setup Claude Code CLI
     ├── setup-rube-goldberg-project.sh # Setup Rube Goldberg project
     └── verify-installation.sh # Verify tool installation
 ```
+
+**NEW**: All scripts now use a shared common library (`scripts/common.sh`) with reusable functions to reduce code duplication and improve security. See [`scripts/README.md`](scripts/README.md) for function documentation.
 
 ## Quick Start
 
