@@ -2,7 +2,9 @@
 # Setup a new project with AGENTS.md and Rube Goldberg infrastructure
 # Usage: ./setup-rube-goldberg-project.sh <project-name> <language> [project-type]
 
-set -e
+# Source common functions
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/common.sh"
 
 echo "🤖 Rube Goldberg Project Setup Wizard"
 echo ""
@@ -12,6 +14,7 @@ PROJECT_NAME="$1"
 LANGUAGE="$2"
 PROJECT_TYPE="${3:-cli-tool}"
 
+# Validate required parameters
 if [ -z "$PROJECT_NAME" ] || [ -z "$LANGUAGE" ]; then
     echo "Usage: $0 <project-name> <language> [project-type]"
     echo ""
@@ -32,11 +35,9 @@ echo "Language: $LANGUAGE"
 echo "Type: $PROJECT_TYPE"
 echo "Location: $PROJECT_DIR"
 echo ""
-read -p "Create this project? (y/n) " -n 1 -r
-echo ""
 
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    echo "Cancelled."
+# Confirm with user
+if ! prompt_confirm "Create this project?"; then
     exit 0
 fi
 
